@@ -3,4 +3,4 @@ project(ConnectFour C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(ConnectFour main.c)
+add_executable(ConnectFour src/main.c)
