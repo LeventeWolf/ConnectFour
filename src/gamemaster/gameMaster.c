@@ -3,7 +3,7 @@
 #include "gameMaster.h"
 #include "../handlers/modeHandler/modeHandler.h"
 #include "../handlers/inputHandler/inputHandler.h"
-
+#include "../board/board.h"
 
 void start() {
     init();
@@ -14,6 +14,7 @@ void start() {
 
 void init() {
     init_modes();
+    init_board();
 }
 
 void show_title() {
