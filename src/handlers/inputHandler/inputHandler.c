@@ -1,13 +1,11 @@
-#include <stdlib.h>
 #include "stdio.h"
 #include "inputHandler.h"
 
 int get_main_menu_choice(){
-
     int choice;
 
     show_enter_your_choice();
-    while(scanf("%d" ,&choice) != 1 || !(1 <= choice && choice <= 4))
+    while(scanf("%d" ,&choice) != 1 || !(0 <= choice && choice <= 4))
     {
         printf("Invalid choice!\n");
         show_enter_your_choice();

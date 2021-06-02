@@ -1,11 +1,19 @@
 #include <stdio.h>
+#include <stdbool.h>
 #include "gameMaster.h"
 #include "../handlers/modeHandler/modeHandler.h"
 #include "../handlers/inputHandler/inputHandler.h"
 
+
 void start() {
+    init();
+
     show_title();
     main_menu();
+}
+
+void init() {
+    init_modes();
 }
 
 void show_title() {
@@ -14,6 +22,10 @@ void show_title() {
 
 void main_menu() {
     printf(PADDING "--Main Menu--" PADDING "\n");
-    show_modes();
-    get_main_menu_choice();
+    while(true){
+        show_modes();
+        if (play_mode(get_main_menu_choice()) == 0) {
+            break;
+        }
+    }
 }

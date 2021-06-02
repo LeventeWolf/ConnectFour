@@ -4,6 +4,8 @@
 #define PADDING "           "
 #define TITLE_PADDING "------------"
 
+void init();
+
 void start();
 
 void show_title();
