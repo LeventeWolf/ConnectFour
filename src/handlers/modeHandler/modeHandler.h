@@ -1,0 +1,6 @@
+#ifndef CONNECTFOUR_MODEHANDLER_H
+#define CONNECTFOUR_MODEHANDLER_H
+
+void show_modes();
+
+#endif //CONNECTFOUR_MODEHANDLER_H
