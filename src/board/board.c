@@ -1,6 +1,6 @@
 #include <malloc.h>
 #include "board.h"
-#include "../gamemaster/gameMaster.h"
+#include "../gameMaster/gameMaster.h"
 
 char** board;
 
@@ -24,7 +24,7 @@ void show_board(){
     for (int i = 0; i < BOARD_SIZE; ++i) {
         printf("        ");
         for (int j = 0; j < BOARD_SIZE; ++j) {
-            printf("|%c", board[i][j]);
+            printf("|\033[0;34m%c\033[0m", board[i][j]);
         }
         printf("|\n");
     }
