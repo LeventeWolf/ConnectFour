@@ -17,7 +17,7 @@ int get_main_menu_choice(){
     return choice;
 }
 
-int get_put_choice(){
+int get_index_where_to_put(){
     int choice;
 
     show_enter_your_choice();
@@ -28,7 +28,7 @@ int get_put_choice(){
         while(getchar() != '\n');
     }
 
-    return choice;
+    return choice - 1;
 }
 
 char** get_two_player_name(){
@@ -44,6 +44,14 @@ char** get_two_player_name(){
     scanf("%99s", player_names[1]);
 
     return player_names;
+}
+
+char* get_player_name(){
+    char *player_name = malloc(100 * sizeof(char));
+    show_enter_player_name(1);
+    scanf("%99s", player_name);
+
+    return player_name;
 }
 
 void show_enter_player_name(int player_number) {

@@ -2,9 +2,11 @@
 #define CONNECTFOUR_INPUTHANDLER_H
 
 int get_main_menu_choice();
-int get_put_choice();
+int get_index_where_to_put();
 
-char** get_two_player_name();
+char **get_two_player_name();
+
+char* get_player_name();
 
 void show_enter_player_name(int player_number);
 

@@ -22,7 +22,6 @@ void show_title() {
 }
 
 void main_menu() {
-    printf(PADDING "--Main Menu--" PADDING "\n");
     while(true){
         show_modes();
         if (play_mode(get_main_menu_choice()) == 0) {
