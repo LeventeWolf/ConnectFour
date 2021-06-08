@@ -1,0 +1,3 @@
+add_subdirectory(/inputHandler)
+add_subdirectory(/outputHandler)
+add_subdirectory(/modeHandler)
