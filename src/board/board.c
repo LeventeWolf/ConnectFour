@@ -18,7 +18,6 @@ void init_board() {
     }
 }
 
-
 void show_board(){
     printf( PADDING "-- Board --" PADDING "\n");
 
