@@ -1,6 +1,8 @@
 #include <malloc.h>
 #include "board.h"
 #include "../gameMaster/gameMaster.h"
+#include "../handlers/modeHandler/colors.h"
+#include "../handlers/modeHandler/modeHandler.h"
 
 char** board;
 
@@ -18,13 +20,19 @@ void init_board() {
     }
 }
 
-void show_board(){
+void show_board(struct Player *players){
     printf( PADDING "-- Board --" PADDING "\n");
 
     for (int i = 0; i < BOARD_SIZE; ++i) {
         printf("        ");
         for (int j = 0; j < BOARD_SIZE; ++j) {
-            printf("|\033[0;34m%c\033[0m", board[i][j]);
+            if (board[i][j] == 'X'){
+                printf("|%s⬤"RESET, players[0].color);
+            } else if(board[i][j] == 'O') {
+                printf("|%s⬤"RESET, players[1].color);
+            } else {
+                printf("| ");
+            }
         }
         printf("|\n");
     }

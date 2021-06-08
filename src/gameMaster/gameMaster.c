@@ -14,8 +14,8 @@ void start() {
 }
 
 void init() {
-    init_modes();
     init_board();
+    init_modes();
 }
 
 void show_title() {

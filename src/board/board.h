@@ -1,3 +1,5 @@
+#include "../handlers/modeHandler/modeHandler.h"
+
 #ifndef CONNECTFOUR_BOARD_H
 #define CONNECTFOUR_BOARD_H
 
@@ -7,7 +9,7 @@ extern char** board;
 
 void init_board();
 
-void show_board();
+void show_board(struct Player *players);
 
 
 #endif //CONNECTFOUR_BOARD_H

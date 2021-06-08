@@ -1,3 +1,5 @@
+#include <stdbool.h>
+
 #ifndef CONNECTFOUR_MODEHANDLER_H
 #define CONNECTFOUR_MODEHANDLER_H
 
@@ -8,7 +10,8 @@ void practice_mode();
 
 struct Player {
     char* name;
-    char color;
+    char* color;
+    char token;
     bool is_human;
 };
 

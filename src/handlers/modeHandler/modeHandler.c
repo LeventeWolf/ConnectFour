@@ -8,6 +8,7 @@
 #include "../inputHandler/inputHandler.h"
 #include "../outputHandler/outputHandler.h"
 #include "../../board/board.h"
+#include "colors.h"
 
 #define DEBUG 1
 #define debug_print(args ...) if (DEBUG) fprintf(stderr, args)
@@ -27,9 +28,8 @@ int play_mode(int mode) {
     return 1;
 }
 
-
 void play_turn(struct Player player) {
-    printf("%s's turn: %c\n", player.name, player.color);
+    printf("%s's turn: %s⬤\n" RESET, player.name,player.color);
 
 //    debug_print("DEBUG: player: is_human:%d", player.is_human);
 
@@ -39,7 +39,6 @@ void play_turn(struct Player player) {
         play_computer_turn(player);
     }
 }
-
 
 void play_computer_turn(struct Player player) {
     int error_code = put_color_to_board(get_random_column(), player.color);
@@ -56,15 +55,14 @@ int get_random_column() {
 }
 
 void play_human_turn(struct Player player) {
-    int error_code = put_color_to_board(get_index_where_to_put(), player.color);
+    int error_code = put_color_to_board(get_index_where_to_put(), player.token);
 
     while (error_code != 1) {
         if (error_code == 2) printf("The selected column is full!\n");
 
-        error_code = put_color_to_board(get_index_where_to_put(), player.color);
+        error_code = put_color_to_board(get_index_where_to_put(), player.token);
     }
 }
-
 
 void two_player_mode() {
     show_mode_title("Two Player Mode");
@@ -74,11 +72,11 @@ void two_player_mode() {
     for (int i = 0; i < BOARD_SIZE * BOARD_SIZE; ++i) {
         struct Player player = players[i % 2];
 
-        show_board();
+        show_board(players);
         play_turn(player);
 
-        if (has_won(player.color)){
-            show_board();
+        if (has_won(player.token)){
+            show_board(players);
             show_victory(player.name);
             return;
         }
@@ -95,7 +93,7 @@ void one_player_mode() {
     for (int i = 0; i < BOARD_SIZE * BOARD_SIZE; ++i) {
         struct Player player = players[i % 2];
 
-        show_board();
+        show_board(players);
 
 
         printf("%s's turn: %c\n", player.name, player.color);
@@ -108,8 +106,8 @@ void one_player_mode() {
             error_code = put_color_to_board(get_index_where_to_put(), player.color);
         }
 
-        if (has_won(player.color)){
-            show_board();
+        if (has_won(player.token)){
+            show_board(players);
 
             printf("\n" PADDING "----%s has just won the game!---\n", player.name);
             printf(PADDING "      --Congratulations!--\n\n");
@@ -131,7 +129,6 @@ void practice_mode() {
 
 }
 
-
 //TODO Extract these functions from this class
 
 bool is_cell_empty(int i, int j) {
@@ -140,12 +137,12 @@ bool is_cell_empty(int i, int j) {
     return false;
 }
 
-int put_color_to_board(int column_index, char color) {
+int put_color_to_board(int column_index, char token) {
     if (is_column_full(column_index)) return 2;
 
     for (int row = BOARD_SIZE - 1; row >= 0; --row) {
         if (is_cell_empty(row, column_index)) {
-            board[row][column_index] = color;
+            board[row][column_index] = token;
             break;
         }
     }
@@ -214,8 +211,11 @@ struct Player *get_two_players() {
     player1.name = player_names[0];
     player2.name = player_names[1];
 
-    player1.color = 'X';
-    player2.color = 'O';
+    player1.token = 'X';
+    player2.token = 'O';
+
+    player1.color = BLUE;
+    player2.color = RED;
 
     struct Player *players = malloc(2 * sizeof(struct Player));
     players[0] = player1;

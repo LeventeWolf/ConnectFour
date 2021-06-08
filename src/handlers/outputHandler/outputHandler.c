@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../../gamemaster/gameMaster.h"
+#include "../../gameMaster/gameMaster.h"
 
 void show_mode_title(char *mode) {
     printf("\n" PADDING "--%s--" PADDING "\n", mode);
