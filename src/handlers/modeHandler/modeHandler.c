@@ -1,11 +1,16 @@
 #include <stdio.h>
-#include <malloc.h>
 #include <stdbool.h>
+#include <string.h>
+#include <stdlib.h>
+#include <time.h>
 #include "modeHandler.h"
-#include "../../gamemaster/gameMaster.h"
+#include "../../gameMaster/gameMaster.h"
 #include "../inputHandler/inputHandler.h"
 #include "../outputHandler/outputHandler.h"
 #include "../../board/board.h"
+
+#define DEBUG 1
+#define debug_print(args ...) if (DEBUG) fprintf(stderr, args)
 
 void init_modes() {
     MODES[0] = two_player_mode;
@@ -22,6 +27,45 @@ int play_mode(int mode) {
     return 1;
 }
 
+
+void play_turn(struct Player player) {
+    printf("%s's turn: %c\n", player.name, player.color);
+
+//    debug_print("DEBUG: player: is_human:%d", player.is_human);
+
+    if (player.is_human) {
+        play_human_turn(player);
+    } else {
+        play_computer_turn(player);
+    }
+}
+
+
+void play_computer_turn(struct Player player) {
+    int error_code = put_color_to_board(get_random_column(), player.color);
+
+    while (error_code != 1) {
+        error_code = put_color_to_board(get_random_column(), player.color);
+    }
+}
+
+int get_random_column() {
+    srand(time(NULL));
+
+    return rand() % BOARD_SIZE;
+}
+
+void play_human_turn(struct Player player) {
+    int error_code = put_color_to_board(get_index_where_to_put(), player.color);
+
+    while (error_code != 1) {
+        if (error_code == 2) printf("The selected column is full!\n");
+
+        error_code = put_color_to_board(get_index_where_to_put(), player.color);
+    }
+}
+
+
 void two_player_mode() {
     show_mode_title("Two Player Mode");
 
@@ -31,7 +75,7 @@ void two_player_mode() {
         struct Player player = players[i % 2];
 
         show_board();
-        play_two_player_turn(player);
+        play_turn(player);
 
         if (has_won(player.color)){
             show_board();
@@ -41,18 +85,6 @@ void two_player_mode() {
     }
 
     show_draw();
-}
-
-void play_two_player_turn(struct Player player) {
-    printf("%s's turn: %c\n", player.name, player.color);
-
-    int error_code = put_color_to_board(get_index_where_to_put(), player.color);
-
-    while (error_code != 1) {
-        if (error_code == 2) printf("The selected column is full!\n");
-
-        error_code = put_color_to_board(get_index_where_to_put(), player.color);
-    }
 }
 
 void one_player_mode() {
@@ -65,7 +97,6 @@ void one_player_mode() {
 
         show_board();
 
-        play_two_player_turn(player);
 
         printf("%s's turn: %c\n", player.name, player.color);
 
@@ -202,6 +233,9 @@ struct Player *get_one_player_and_computer(){
 
     player1.color = 'X';
     player2.color = 'O';
+
+    player1.is_human = true;
+    player2.is_human = false;
 
     struct Player *players = malloc(2 * sizeof(struct Player));
     players[0] = player1;

@@ -9,7 +9,15 @@ void practice_mode();
 struct Player {
     char* name;
     char color;
+    bool is_human;
 };
+
+int get_random_column();
+
+
+void play_human_turn(struct Player player);
+
+void play_computer_turn(struct Player player);
 
 struct Player *get_two_players();
 
@@ -21,7 +29,7 @@ void init_modes();
 
 int play_mode(int mode);
 
-void play_two_player_turn(struct Player player);
+void play_turn(struct Player player);
 
 bool has_won(char color);
 
