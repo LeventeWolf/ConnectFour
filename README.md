@@ -18,7 +18,7 @@ Or run the bash scripts
 ```
 Give permissions to the script files (with chmod)
 
-If you want to run the scripts without "./" you can can even add current directory to the PATH:
+If you want to run the scripts without "./" you can even add current directory to the PATH:
 ```shell
 export PATH="$PATH:."
 ```
