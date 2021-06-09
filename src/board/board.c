@@ -4,6 +4,11 @@
 #include "../handlers/modeHandler/colors.h"
 #include "../handlers/modeHandler/modeHandler.h"
 
+#ifndef DEBUG
+#define DEBUG 0
+#define debug_print(args ...) if (DEBUG){ printf(RED); printf(args); printf(RESET); }
+#endif
+
 char** board;
 
 void init_board() {
@@ -54,4 +59,6 @@ void show_board(struct Player *players){
     }
     printf("\\");
     printf("\n");
+
+    debug_print("DEBUG: Board printed successfully!\n");
 }

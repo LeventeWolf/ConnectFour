@@ -26,6 +26,8 @@ struct Player *get_two_players();
 
 struct Player *get_one_player_and_computer();
 
+struct Player *get_two_computers();
+
 void (*MODES[4]) ();
 
 void init_modes();

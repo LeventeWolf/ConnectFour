@@ -10,8 +10,11 @@
 #include "../../board/board.h"
 #include "colors.h"
 
+#ifndef DEBUGG
 #define DEBUG 1
-#define debug_print(args ...) if (DEBUG) fprintf(stderr, args)
+#define debug_print(args ...) if (DEBUG){ printf(RED); printf(args); printf(RESET); }
+#endif
+
 
 void init_modes() {
     MODES[0] = two_player_mode;
@@ -29,9 +32,7 @@ int play_mode(int mode) {
 }
 
 void play_turn(struct Player player) {
-    printf("%s's turn: %s⬤\n" RESET, player.name,player.color);
-
-//    debug_print("DEBUG: player: is_human:%d", player.is_human);
+    show_player_turn(player);
 
     if (player.is_human) {
         play_human_turn(player);
@@ -41,27 +42,36 @@ void play_turn(struct Player player) {
 }
 
 void play_computer_turn(struct Player player) {
-    int error_code = put_color_to_board(get_random_column(), player.color);
+    time_t t;
+    srand((unsigned) time(&t));
 
-    while (error_code != 1) {
-        error_code = put_color_to_board(get_random_column(), player.color);
-    }
+    int error_code;
+    int random_column;
+
+    do {
+        random_column = rand() % BOARD_SIZE;
+        error_code = put_color_to_board(random_column, player.token);
+    } while (error_code != 1);
+
+    printf("> %d\n", random_column + 1);
+
 }
 
 int get_random_column() {
-    srand(time(NULL));
 
-    return rand() % BOARD_SIZE;
+
+    return 0;
 }
 
 void play_human_turn(struct Player player) {
-    int error_code = put_color_to_board(get_index_where_to_put(), player.token);
+    int error_code;
 
-    while (error_code != 1) {
+    do {
+        error_code = put_color_to_board(get_index_where_to_put(), player.token);
+
         if (error_code == 2) printf("The selected column is full!\n");
 
-        error_code = put_color_to_board(get_index_where_to_put(), player.token);
-    }
+    } while (error_code != 1);
 }
 
 void two_player_mode() {
@@ -73,6 +83,7 @@ void two_player_mode() {
         struct Player player = players[i % 2];
 
         show_board(players);
+
         play_turn(player);
 
         if (has_won(player.token)){
@@ -95,33 +106,38 @@ void one_player_mode() {
 
         show_board(players);
 
-
-        printf("%s's turn: %c\n", player.name, player.color);
-
-        int error_code = put_color_to_board(get_index_where_to_put(), player.color);
-
-        while (error_code != 1) {
-            if (error_code == 2) printf("The selected column is full!\n");
-
-            error_code = put_color_to_board(get_index_where_to_put(), player.color);
-        }
+        play_turn(player);
 
         if (has_won(player.token)){
             show_board(players);
-
-            printf("\n" PADDING "----%s has just won the game!---\n", player.name);
-            printf(PADDING "      --Congratulations!--\n\n");
+            show_victory(player.name);
             return;
         }
-
     }
 
     show_draw();
 }
 
 void computer_vs_computer_mode() {
-    show_mode_title("Computer vs Computer Mode");
+    show_mode_title("Computer Vs Computer Mode");
 
+    struct Player *players = get_two_computers();
+
+    for (int i = 0; i < BOARD_SIZE * BOARD_SIZE; ++i) {
+        struct Player player = players[i % 2];
+
+        show_board(players);
+
+        play_turn(player);
+
+        if (has_won(player.token)){
+            show_board(players);
+            show_victory(player.name);
+            return;
+        }
+    }
+
+    show_draw();
 }
 
 void practice_mode() {
@@ -200,7 +216,6 @@ bool has_won(char color) {
     return false;
 }
 
-
 //TODO Extract these functions from this class
 
 struct Player *get_two_players() {
@@ -210,6 +225,9 @@ struct Player *get_two_players() {
 
     player1.name = player_names[0];
     player2.name = player_names[1];
+
+    player1.is_human = true;
+    player2.is_human = true;
 
     player1.token = 'X';
     player2.token = 'O';
@@ -231,15 +249,42 @@ struct Player *get_one_player_and_computer(){
     player1.name = get_player_name();
     player2.name = "Computer";
 
-    player1.color = 'X';
-    player2.color = 'O';
+    player1.token = 'X';
+    player2.token = 'O';
 
     player1.is_human = true;
     player2.is_human = false;
 
+    player1.color = BLUE;
+    player2.color = RED;
+
     struct Player *players = malloc(2 * sizeof(struct Player));
+
     players[0] = player1;
     players[1] = player2;
 
     return players;
 }
+
+struct Player *get_two_computers() {
+    struct Player player1;
+    struct Player player2;
+
+    player1.name = "Computer1";
+    player2.name = "Computer2";
+
+    player1.token = 'X';
+    player2.token = 'O';
+
+    player1.is_human = false;
+    player2.is_human = false;
+
+    player1.color = BLUE;
+    player2.color = RED;
+
+    struct Player *players = malloc(2 * sizeof(struct Player));
+
+    players[0] = player1;
+    players[1] = player2;
+
+    return players;}

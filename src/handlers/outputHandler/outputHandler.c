@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include "../../gameMaster/gameMaster.h"
+#include "../modeHandler/modeHandler.h"
+#include "../modeHandler/colors.h"
 
 void show_mode_title(char *mode) {
     printf("\n" PADDING "--%s--" PADDING "\n", mode);
@@ -22,4 +24,8 @@ void show_victory(char *name) {
 void show_draw() {
     printf(PADDING "----GAME OVER----\n");
     printf(PADDING "    --DRAW--\n\n");
+}
+
+void show_player_turn(struct Player player){
+    printf("%s's turn: %s⬤\n" RESET, player.name, player.color);
 }

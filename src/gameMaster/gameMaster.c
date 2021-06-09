@@ -14,7 +14,6 @@ void start() {
 }
 
 void init() {
-    init_board();
     init_modes();
 }
 
@@ -25,6 +24,7 @@ void show_title() {
 void main_menu() {
     while(true){
         show_modes();
+        init_board();
         if (play_mode(get_main_menu_choice()) == 0) {
             break;
         }
