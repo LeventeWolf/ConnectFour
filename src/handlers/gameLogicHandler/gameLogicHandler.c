@@ -16,7 +16,7 @@ void play_turn(struct Player player) {
         sleep(1);
     }
 
-//    clear_console();
+    clear_console();
 }
 
 void play_computer_turn(struct Player computer) {
