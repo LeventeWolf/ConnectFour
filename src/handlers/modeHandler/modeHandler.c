@@ -110,13 +110,13 @@ void one_player_mode() {
         if (has_won(player.token)){
             show_board(players);
             show_victory(player.name);
-            free_players(players);
+            free_human_and_computer(players);
             return;
         }
     }
 
     show_draw();
-    free_players(players);
+    free_human_and_computer(players);
 }
 
 void computer_vs_computer_mode() {
@@ -146,17 +146,6 @@ void computer_vs_computer_mode() {
 void practice_mode() {
     show_mode_title("Practice Mode");
 
-}
-
-void free_players(struct Player *players){
-    free(players[0].name);
-    free(players[1].name);
-
-    free(players);
-}
-
-void free_computers(struct Player *players) {
-    free(players);
 }
 
 //TODO Extract these functions from this class
@@ -305,3 +294,20 @@ struct Player *get_two_computers() {
     players[1] = player2;
 
     return players;}
+
+void free_players(struct Player *players){
+    free(players[0].name);
+    free(players[1].name);
+
+    free(players);
+}
+
+void free_human_and_computer(struct Player *players){
+    free(players[0].name);
+
+    free(players);
+}
+
+void free_computers(struct Player *players) {
+    free(players);
+}

@@ -32,6 +32,8 @@ void free_players(struct Player *players);
 
 void free_computers(struct Player *players);
 
+void free_human_and_computer(struct Player *players);
+
 
 void (*MODES[4]) ();
 
