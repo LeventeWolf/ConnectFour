@@ -10,8 +10,9 @@
 
 void start() {
     srand ( time(NULL) );
-
     init();
+
+    clear_console();
 
     show_title();
     main_menu();

@@ -11,4 +11,6 @@ void show_draw();
 
 void show_player_turn(struct Player player);
 
+void clear_console();
+
 #endif //CONNECTFOUR_OUTPUTHANDLER_H

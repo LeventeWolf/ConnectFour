@@ -25,7 +25,10 @@ void init_modes() {
 int play_mode(int mode) {
     if (mode == 0) return 0;
 
+    clear_console();
+
     (*MODES[mode - 1])();
+
 
     return 1;
 }
@@ -38,6 +41,8 @@ void play_turn(struct Player player) {
     } else {
         play_computer_turn(player);
     }
+
+    clear_console();
 }
 
 void play_computer_turn(struct Player player) {

@@ -1,10 +1,11 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "../../gameMaster/gameMaster.h"
 #include "../modeHandler/modeHandler.h"
 #include "../modeHandler/colors.h"
 
 void show_mode_title(char *mode) {
-    printf("\n" PADDING "--%s--" PADDING "\n", mode);
+    printf( PADDING "--%s--" PADDING "\n\n", mode);
 }
 
 void show_modes() {
@@ -17,8 +18,8 @@ void show_modes() {
 }
 
 void show_victory(char *name) {
-    printf("\n" PADDING "----%s has just won the game!---\n", name);
-    printf(PADDING "      --Congratulations!--\n\n");
+    printf("\n----%s has just won the game!---\n", name);
+    printf("      --Congratulations!--\n\n");
 }
 
 void show_draw() {
@@ -28,4 +29,8 @@ void show_draw() {
 
 void show_player_turn(struct Player player){
     printf("%s's turn: %s⬤\n" RESET, player.name, player.color);
+}
+
+void clear_console(){
+    system("clear");
 }

@@ -2,6 +2,7 @@
 #include "stdio.h"
 #include "inputHandler.h"
 #include "../../board/board.h"
+#include "../outputHandler/outputHandler.h"
 
 int get_main_menu_choice(){
     int choice;
@@ -40,8 +41,12 @@ char** get_two_player_name(){
     show_enter_player_name(1);
     scanf("%99s", player_names[0]);
 
+    printf("\n");
+
     show_enter_player_name(2);
     scanf("%99s", player_names[1]);
+
+    clear_console();
 
     return player_names;
 }
@@ -51,6 +56,8 @@ char* get_player_name(){
     show_enter_player_name(1);
     scanf("%99s", player_name);
 
+    clear_console();
+    
     return player_name;
 }
 
