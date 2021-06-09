@@ -31,6 +31,14 @@ void show_player_turn(struct Player player){
     printf("%s's turn: %s⬤\n" RESET, player.name, player.color);
 }
 
+void show_enter_player_name(int player_number) {
+    printf("Enter player%d name:\n> ", player_number);
+}
+
+void show_enter_your_choice(){
+    printf("Enter your choice:\n> ");
+}
+
 void clear_console(){
     system("clear");
 }

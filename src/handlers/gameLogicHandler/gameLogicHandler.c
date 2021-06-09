@@ -1,4 +1,47 @@
+#include <unistd.h>
+#include <stdio.h>
 #include "../../board/board.h"
+#include "../outputHandler/outputHandler.h"
+#include "../gameLogicHandler/gameLogicHandler.h"
+#include "../inputHandler/inputHandler.h"
+
+void play_turn(struct Player player) {
+    show_player_turn(player);
+
+    if (player.is_human) {
+        play_human_turn(player);
+    } else {
+        play_computer_turn(player);
+        sleep(1);
+    }
+
+    clear_console();
+}
+
+void play_computer_turn(struct Player player) {
+    int error_code;
+    int random_column;
+
+    do {
+        random_column = get_random_column();
+        error_code = put_color_to_board(random_column, player.token);
+    } while (error_code != 1);
+
+//    printf("> %d\n", random_column + 1);
+
+}
+
+void play_human_turn(struct Player player) {
+    int error_code;
+
+    do {
+        error_code = put_color_to_board(get_index_where_to_put(), player.token);
+
+        if (error_code == 2) printf("The selected column is full!\n");
+
+    } while (error_code != 1);
+}
+
 
 bool is_cell_empty(int i, int j) {
     if (board[i][j] == ' ') return true;
