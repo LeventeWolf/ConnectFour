@@ -1,0 +1,2 @@
+add_library(gameLogicHandler gameLogicHandler.c)
+target_include_directories(gameLogicHandler PUBLIC .)
