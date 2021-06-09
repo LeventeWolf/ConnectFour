@@ -54,9 +54,6 @@ void play_computer_turn(struct Player player) {
 }
 
 int get_random_column() {
-    time_t t;
-    srand((unsigned) time(&t));
-
     return rand() % BOARD_SIZE;
 }
 

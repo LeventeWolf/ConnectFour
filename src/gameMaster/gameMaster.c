@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
+#include <time.h>
 #include "gameMaster.h"
 #include "../handlers/modeHandler/modeHandler.h"
 #include "../handlers/inputHandler/inputHandler.h"
@@ -7,6 +9,8 @@
 #include "../board/board.h"
 
 void start() {
+    srand ( time(NULL) );
+
     init();
 
     show_title();
