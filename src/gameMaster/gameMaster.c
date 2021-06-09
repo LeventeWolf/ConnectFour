@@ -23,7 +23,7 @@ void init() {
 }
 
 void show_title() {
-    printf(TITLE_PADDING "Connect Four" TITLE_PADDING "\n");
+    printf(TITLE_PADDING "Connect Four" TITLE_PADDING "\n\n");
 }
 
 void main_menu() {

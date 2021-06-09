@@ -34,7 +34,7 @@ void free_board(){
 }
 
 void show_board(struct Player *players){
-    printf( PADDING "-- Board --" PADDING "\n");
+    printf( PADDING "-- Board --" PADDING "\n\n");
 
     for (int i = 0; i < BOARD_SIZE; ++i) {
         printf("        ");
@@ -53,7 +53,6 @@ void show_board(struct Player *players){
     printf("        ");
     for (int i = 0; i < BOARD_SIZE * 2 + 1; ++i) printf("─");
 
-
     printf("\n");
 
     printf("        ");
@@ -66,7 +65,7 @@ void show_board(struct Player *players){
         }
     }
     printf("\\");
-    printf("\n");
+    printf("\n\n");
 
     debug_print("DEBUG: Board printed successfully!\n");
 }

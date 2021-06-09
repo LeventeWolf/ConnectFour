@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>
+#include <unistd.h>
 #include "modeHandler.h"
 #include "../../gameMaster/gameMaster.h"
 #include "../inputHandler/inputHandler.h"
@@ -40,6 +41,7 @@ void play_turn(struct Player player) {
         play_human_turn(player);
     } else {
         play_computer_turn(player);
+        sleep(1);
     }
 
     clear_console();
@@ -54,7 +56,7 @@ void play_computer_turn(struct Player player) {
         error_code = put_color_to_board(random_column, player.token);
     } while (error_code != 1);
 
-    printf("> %d\n", random_column + 1);
+//    printf("> %d\n", random_column + 1);
 
 }
 
@@ -87,7 +89,7 @@ void two_player_mode() {
 
         if (has_won(player.token)){
             show_board(players);
-            show_victory(player.name);
+            show_victory(player);
             free_players(players);
             return;
         }
@@ -111,7 +113,7 @@ void one_player_mode() {
 
         if (has_won(player.token)){
             show_board(players);
-            show_victory(player.name);
+            show_victory(player);
             free_human_and_computer(players);
             return;
         }
@@ -135,7 +137,7 @@ void computer_vs_computer_mode() {
 
         if (has_won(player.token)){
             show_board(players);
-            show_victory(player.name);
+            show_victory(player);
             free_computers(players);
             return;
         }
@@ -278,8 +280,8 @@ struct Player *get_two_computers() {
     struct Player player1;
     struct Player player2;
 
-    player1.name = "Computer1";
-    player2.name = "Computer2";
+    player1.name = "Computer_Bobby";
+    player2.name = "Computer_Alice";
 
     player1.token = 'X';
     player2.token = 'O';

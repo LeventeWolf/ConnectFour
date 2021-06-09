@@ -5,7 +5,7 @@ void show_mode_title(char *mode);
 
 void show_modes();
 
-void show_victory(char *name);
+void show_victory(struct Player player);
 
 void show_draw();
 
