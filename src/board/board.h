@@ -9,6 +9,8 @@ extern char** board;
 
 void init_board();
 
+void free_board();
+
 void show_board(struct Player *players);
 
 

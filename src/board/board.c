@@ -25,6 +25,14 @@ void init_board() {
     }
 }
 
+void free_board(){
+    for (int i = 0; i < BOARD_SIZE; ++i) {
+        free(board[i]);
+    }
+
+    free(board);
+}
+
 void show_board(struct Player *players){
     printf( PADDING "-- Board --" PADDING "\n");
 

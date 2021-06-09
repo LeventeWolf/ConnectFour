@@ -15,7 +15,6 @@
 #define debug_print(args ...) if (DEBUG){ printf(RED); printf(args); printf(RESET); }
 #endif
 
-
 void init_modes() {
     MODES[0] = two_player_mode;
     MODES[1] = one_player_mode;
@@ -42,14 +41,11 @@ void play_turn(struct Player player) {
 }
 
 void play_computer_turn(struct Player player) {
-    time_t t;
-    srand((unsigned) time(&t));
-
     int error_code;
     int random_column;
 
     do {
-        random_column = rand() % BOARD_SIZE;
+        random_column = get_random_column();
         error_code = put_color_to_board(random_column, player.token);
     } while (error_code != 1);
 
@@ -58,9 +54,10 @@ void play_computer_turn(struct Player player) {
 }
 
 int get_random_column() {
+    time_t t;
+    srand((unsigned) time(&t));
 
-
-    return 0;
+    return rand() % BOARD_SIZE;
 }
 
 void play_human_turn(struct Player player) {
@@ -89,11 +86,13 @@ void two_player_mode() {
         if (has_won(player.token)){
             show_board(players);
             show_victory(player.name);
+            free_players(players);
             return;
         }
     }
 
     show_draw();
+    free_players(players);
 }
 
 void one_player_mode() {
@@ -111,11 +110,13 @@ void one_player_mode() {
         if (has_won(player.token)){
             show_board(players);
             show_victory(player.name);
+            free_players(players);
             return;
         }
     }
 
     show_draw();
+    free_players(players);
 }
 
 void computer_vs_computer_mode() {
@@ -133,16 +134,29 @@ void computer_vs_computer_mode() {
         if (has_won(player.token)){
             show_board(players);
             show_victory(player.name);
+            free_computers(players);
             return;
         }
     }
 
     show_draw();
+    free_computers(players);
 }
 
 void practice_mode() {
     show_mode_title("Practice Mode");
 
+}
+
+void free_players(struct Player *players){
+    free(players[0].name);
+    free(players[1].name);
+
+    free(players);
+}
+
+void free_computers(struct Player *players) {
+    free(players);
 }
 
 //TODO Extract these functions from this class
@@ -226,6 +240,8 @@ struct Player *get_two_players() {
     player1.name = player_names[0];
     player2.name = player_names[1];
 
+    free(player_names);
+
     player1.is_human = true;
     player2.is_human = true;
 
@@ -236,6 +252,7 @@ struct Player *get_two_players() {
     player2.color = RED;
 
     struct Player *players = malloc(2 * sizeof(struct Player));
+
     players[0] = player1;
     players[1] = player2;
 
