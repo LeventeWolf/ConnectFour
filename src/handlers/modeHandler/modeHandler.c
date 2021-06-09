@@ -183,8 +183,8 @@ bool is_column_full(int column_index) {
 
 bool has_won(char color) {
     // horizontal_check
-    for (int j = 0; j < BOARD_SIZE - 3; j++) {
-        for (int i = 0; i < BOARD_SIZE; i++) {
+    for (int i = 0; i < BOARD_SIZE; i++) {
+        for (int j = 0; j < BOARD_SIZE  - 3; j++) {
             if (board[i][j] == color && board[i][j + 1] == color &&
                 board[i][j + 2] == color && board[i][j + 3] == color) {
                 return true;
