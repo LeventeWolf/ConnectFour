@@ -1,11 +1,14 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <colors.h>
+#include <malloc.h>
 #include "../../board/board.h"
 #include "../outputHandler/outputHandler.h"
 #include "../gameLogicHandler/gameLogicHandler.h"
 #include "../inputHandler/inputHandler.h"
 #include "../computerHandler/computerHandler.h"
+
+void print_array(int* array);
 
 void play_turn(struct Player player) {
     show_player_turn(player);
@@ -29,6 +32,12 @@ void play_computer_turn(struct Player computer) {
         return;
     }
 
+
+    // TODO don't prepare enemy win
+    // dont prepare enemy win (avoid putting under enemy win condition)
+    int *columns_to_avoid = get_computer_columns_to_avoid(computer);
+    print_array(columns_to_avoid);
+
     // sabotage enemy victory
     int try_sabotage_victory = get_column_computer_sabotage_victory(computer);
     if (try_sabotage_victory != -1){
@@ -36,16 +45,32 @@ void play_computer_turn(struct Player computer) {
         return;
     }
 
-    // TODO don't prepare enemy win
-    // dont prepare enemy win (avoid putting under enemy win condition)
+
+
 
     // put randomly
     int error_code;
     int random_column;
     do {
-        random_column = get_random_column();
+        random_column = get_random_column(columns_to_avoid);
         error_code = put_color_to_board(random_column, computer.token);
     } while (error_code != 1);
+
+    free(columns_to_avoid);
+}
+
+void print_array(int *array) {
+    printf("columns to avoid: ");
+
+    if (get_array_size(array) == 0) {
+        printf("none\n");
+        return;
+    }
+
+    for (int i = 0; array[i] != -1; ++i) {
+        printf("%d ", array[i] + 1);
+     }
+    printf("\n");
 }
 
 void play_human_turn(struct Player player) {
@@ -142,4 +167,37 @@ bool has_won(char token) {
     }
 
     return false;
+}
+
+int get_array_size(const int *array){
+    int size = 0;
+
+    for (int i = 0; array[i] != -1; ++i) {
+        size++;
+    }
+
+    return size;
+}
+
+bool contains(const int *array, const int column){
+    if (get_array_size(array) == 0) return false;
+
+    for (int i = 0; array[i] != -1; ++i) {
+        if (column == array[i]) return true;
+    }
+
+    return false;
+}
+
+/*
+ * create int[] array with -1 default values
+ */
+int *create_my_array(int size, int default_value){
+    int *array = malloc(size * sizeof(int));
+
+    for (int i = 0; i < size; ++i) {
+        array[i] = default_value;
+    }
+
+    return array;
 }

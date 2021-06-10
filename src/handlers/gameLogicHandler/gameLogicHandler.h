@@ -17,6 +17,12 @@ bool has_won(char color);
 
 bool can_place_token_here(int i, int j);
 
+int get_array_size(const int *array);
+
+bool contains(const int *array, int column);
+
+int *create_my_array(int size, int default_value);
+
 
 /*
  * return codes:

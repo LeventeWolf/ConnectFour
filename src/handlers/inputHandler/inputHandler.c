@@ -4,6 +4,7 @@
 #include "../../board/board.h"
 #include "../outputHandler/outputHandler.h"
 #include "../modeHandler/colors.h"
+#include "../gameLogicHandler/gameLogicHandler.h"
 
 int get_main_menu_choice(){
     int choice;
@@ -33,9 +34,7 @@ int get_index_where_to_put(){
     return choice - 1;
 }
 
-int get_random_column() {
-    return rand() % BOARD_SIZE;
-}
+
 
 
 char** get_two_player_name(){
@@ -108,6 +107,8 @@ struct Player *get_one_player_and_computer(){
     player1.is_human = true;
     player2.is_human = false;
 
+    player2.columns_to_avoid = create_my_array(BOARD_SIZE, -1);
+
     player1.color = BLUE;
     player2.color = RED;
 
@@ -132,6 +133,9 @@ struct Player *get_two_computers() {
     player1.is_human = false;
     player2.is_human = false;
 
+    player1.columns_to_avoid = create_my_array(BOARD_SIZE, -1);
+    player2.columns_to_avoid = create_my_array(BOARD_SIZE, -1);
+
     player1.color = BLUE;
     player2.color = RED;
 
@@ -152,10 +156,14 @@ void free_players(struct Player *players){
 
 void free_human_and_computer(struct Player *players){
     free(players[0].name);
+    free(players[1].columns_to_avoid);
 
     free(players);
 }
 
 void free_computers(struct Player *players) {
+    free(players[0].columns_to_avoid);
+    free(players[1].columns_to_avoid);
+
     free(players);
 }

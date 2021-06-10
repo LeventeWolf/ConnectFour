@@ -17,6 +17,9 @@ struct Player {
     char* color;
     char token;
     bool is_human;
+
+    //computer_only
+    int* columns_to_avoid;
 };
 
 int play_mode(int mode);

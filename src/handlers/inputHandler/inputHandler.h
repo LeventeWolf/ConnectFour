@@ -4,7 +4,6 @@
 
 int get_main_menu_choice();
 int get_index_where_to_put();
-int get_random_column();
 
 char **get_two_player_name();
 char* get_player_name();
