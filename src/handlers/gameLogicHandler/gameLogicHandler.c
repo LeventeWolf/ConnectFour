@@ -22,23 +22,31 @@ void play_turn(struct Player player) {
 }
 
 void play_computer_turn(struct Player computer) {
-    int error_code;
-    int random_column;
-
-    int try_sabotage_victory = get_column_computer_sabotage_victory(computer);
-
-    if (try_sabotage_victory != -1){
-        put_color_to_board(try_sabotage_victory, computer.token);
-    }  else {
-        do {
-            random_column = get_random_column();
-            error_code = put_color_to_board(random_column, computer.token);
-        } while (error_code != 1);
+    // easy win
+    int winner_column = get_computer_winner_column(computer);
+    if (winner_column != -1){
+        put_color_to_board(winner_column, computer.token);
+        return;
     }
 
+    // sabotage enemy victory
+    int try_sabotage_victory = get_column_computer_sabotage_victory(computer);
+    if (try_sabotage_victory != -1){
+        put_color_to_board(try_sabotage_victory, computer.token);
+        return;
+    }
+
+    // TODO don't prepare enemy win
+    // dont prepare enemy win (avoid putting under enemy win condition)
+
+    // put randomly
+    int error_code;
+    int random_column;
+    do {
+        random_column = get_random_column();
+        error_code = put_color_to_board(random_column, computer.token);
+    } while (error_code != 1);
 }
-
-
 
 void play_human_turn(struct Player player) {
     int error_code;

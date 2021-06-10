@@ -50,6 +50,7 @@ void two_player_mode() {
         }
     }
 
+    show_board(players);
     show_draw();
     free_players(players);
 }
@@ -74,6 +75,7 @@ void one_player_mode() {
         }
     }
 
+    show_board(players);
     show_draw();
     free_human_and_computer(players);
 }
@@ -98,6 +100,7 @@ void computer_vs_computer_mode() {
         }
     }
 
+    show_board(players);
     show_draw();
     free_computers(players);
 }
