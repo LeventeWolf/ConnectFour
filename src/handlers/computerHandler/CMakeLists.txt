@@ -1,0 +1,2 @@
+add_library(computerHandler computerHandler.c)
+target_include_directories(computerHandler PUBLIC .)

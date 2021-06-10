@@ -1,2 +1,2 @@
-add_library(modeHandler modeHandler.c colors.h ../gameLogicHandler/gameLogicHandler.c ../gameLogicHandler/gameLogicHandler.h)
+add_library(modeHandler modeHandler.c colors.h ../gameLogicHandler/gameLogicHandler.c ../gameLogicHandler/gameLogicHandler.h ../computerHandler/computerHandler.c ../computerHandler/computerHandler.h)
 target_include_directories(modeHandler PUBLIC .)

@@ -17,8 +17,6 @@ bool has_won(char color);
 
 bool can_place_token_here(int i, int j);
 
-int get_column_computer_sabotage_victory(struct Player computer);
-
 
 /*
  * return codes:
