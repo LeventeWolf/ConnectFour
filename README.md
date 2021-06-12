@@ -24,3 +24,7 @@ If you want to run the scripts without "./" you can even add current directory t
 ```shell
 export PATH="$PATH:."
 ```
+
+## Configurations
+
+If the TOKEN "⬤" is wider than ascii characters, you can replace it with "O" in the board.h header.
