@@ -49,9 +49,9 @@ void show_board(struct Player *players){
         printf("        ");
         for (int j = 0; j < BOARD_SIZE; ++j) {
             if (board[i][j] == 'X'){
-                printf("|%s⬤"RESET, players[0].color);
+                printf("|%s"TOKEN RESET, players[0].color);
             } else if(board[i][j] == 'O') {
-                printf("|%s⬤"RESET, players[1].color);
+                printf("|%s"TOKEN RESET, players[1].color);
             } else {
                 printf("| ");
             }

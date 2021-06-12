@@ -1,7 +1,7 @@
 #ifndef CONNECTFOUR_COLORS_H
 #define CONNECTFOUR_COLORS_H
 
-#define TOKEN "⬤";
+#define TOKEN "⬤"
 
 #define BLACK "\033[0;30m"
 #define RED "\033[0;31m"
