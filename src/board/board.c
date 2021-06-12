@@ -2,6 +2,7 @@
 #include "board.h"
 #include "../gameMaster/gameMaster.h"
 #include "../handlers/otherHeaders/colors.h"
+#include "../handlers/otherHeaders/debug.h"
 #include "../handlers/modeHandler/modeHandler.h"
 
 //       -- Board --
@@ -22,6 +23,8 @@ char** board;
 
 void init_board() {
     board = malloc(BOARD_SIZE * sizeof(char *));
+
+    debug_printf("board address: %p\n", board);
 
     for (int i = 0; i < BOARD_SIZE; ++i) {
         board[i] = malloc(100 * sizeof(char));
@@ -76,5 +79,5 @@ void show_board(struct Player *players){
     printf("\\");
     printf("\n\n");
 
-//    debug_print("DEBUG: Board printed successfully!\n");
+    debug_printf("%s\n", "DEBUG: Board printed successfully!");
 }
