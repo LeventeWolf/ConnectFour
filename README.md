@@ -27,4 +27,4 @@ export PATH="$PATH:."
 
 ## Configurations
 
-If the TOKEN "⬤" is wider than ascii characters, you can replace it with "O" in the board.h header.
+If the TOKEN "⬤" is wider than your ascii characters, you can replace it with "O" in the board.h header.
