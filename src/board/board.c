@@ -1,13 +1,22 @@
 #include <malloc.h>
 #include "board.h"
 #include "../gameMaster/gameMaster.h"
-#include "../handlers/modeHandler/colors.h"
+#include "../handlers/otherHeaders/colors.h"
 #include "../handlers/modeHandler/modeHandler.h"
 
-#ifndef DEBUG
-#define DEBUG 0
-#define debug_print(args ...) if (DEBUG){ printf(RED); printf(args); printf(RESET); }
-#endif
+//       -- Board --
+//
+//      0 1 2 3 4 5 6 7
+//   0 | | | | | | | | |
+//   1 | | | | | | | | |
+//   2 | | | | | | | | |
+//   3 | | | | | | | | |
+//   4 | | | | | | | | |
+//   5 | | | | | | | | |
+//   6 | | | | | | | | |
+//   7 | | | | | | | | |
+//     ─────────────────
+//     /1 2 3 4 5 6 7 8\
 
 char** board;
 
@@ -67,5 +76,5 @@ void show_board(struct Player *players){
     printf("\\");
     printf("\n\n");
 
-    debug_print("DEBUG: Board printed successfully!\n");
+//    debug_print("DEBUG: Board printed successfully!\n");
 }
