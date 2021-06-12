@@ -1,10 +1,10 @@
 #include <stdio.h>
-#include <malloc.h>
 #include <stdlib.h>
 #include "../modeHandler/modeHandler.h"
 #include "../../board/board.h"
 #include "../gameLogicHandler/gameLogicHandler.h"
 #include "../otherHeaders/colors.h"
+#include "../otherHeaders/debug.h"
 
 int get_random_column(int *columns_to_avoid) {
     if (get_array_size(columns_to_avoid) == BOARD_SIZE)
@@ -37,7 +37,7 @@ int get_column_computer_sabotage_victory(struct Player computer) {
                 can_place_token_here(row - 3, column)) {
 
 //                TODO add to -DEBUG
-                printf(RED "SABOTAGING VERTICAL: COLUMN %d\n" RESET, column + 1);
+                debug_printf(RED "SABOTAGING VERTICAL: COLUMN %d\n" RESET, column + 1);
                 return column;
             }
         }
@@ -56,7 +56,7 @@ int get_column_computer_sabotage_victory(struct Player computer) {
                 board[row][column + 2] == enemy_token &&
                 can_place_token_here(row, column + 3)) {
 
-                printf(CYAN "SABOTAGING HORIZONTAL 4. HOLE: column: %d\n" RESET, column + 4);
+                debug_printf(CYAN "SABOTAGING HORIZONTAL 4. HOLE: column: %d\n" RESET, column + 4);
                 return column + 3;
             }
         }
@@ -71,7 +71,7 @@ int get_column_computer_sabotage_victory(struct Player computer) {
                 can_place_token_here(row, column + 2)&&
                 board[row][column + 3] == enemy_token) {
 
-                printf(CYAN "SABOTAGING HORIZONTAL 3. HOLE: column: %d\n" RESET, column + 3);
+                debug_printf(CYAN "SABOTAGING HORIZONTAL 3. HOLE: column: %d\n" RESET, column + 3);
                 return column + 2;
             }
         }
@@ -86,7 +86,7 @@ int get_column_computer_sabotage_victory(struct Player computer) {
                 board[row][column - 2] == enemy_token &&
                 can_place_token_here(row, column - 3)) {
 
-                printf(CYAN "SABOTAGING HORIZONTAL 1. HOLE: column: %d\n" RESET, column - 2);
+                debug_printf(CYAN "SABOTAGING HORIZONTAL 1. HOLE: column: %d\n" RESET, column - 2);
                 return column - 3;
             }
         }
@@ -101,7 +101,7 @@ int get_column_computer_sabotage_victory(struct Player computer) {
                 can_place_token_here(row, column - 2) &&
                 board[row][column - 3] == enemy_token) {
 
-                printf(CYAN "SABOTAGING HORIZONTAL 2. HOLE: column: %d\n" RESET, column - 1);
+                debug_printf(CYAN "SABOTAGING HORIZONTAL 2. HOLE: column: %d\n" RESET, column - 1);
                 return column - 2;
             }
         }
@@ -123,7 +123,7 @@ int get_column_computer_sabotage_victory(struct Player computer) {
                 board[row - 2][column + 2] == enemy_token &&
                 board[row - 3][column + 3] == enemy_token) {
 
-                printf(YELLOW "SABOTAGING ASC 2. HOLE DIAGN: column: %d\n" RESET, column + 1);
+                debug_printf(YELLOW "SABOTAGING ASC 2. HOLE DIAGN: column: %d\n" RESET, column + 1);
                 return column;
             }
         }
@@ -141,7 +141,7 @@ int get_column_computer_sabotage_victory(struct Player computer) {
                 board[row - 2][column + 2] == enemy_token &&
                 board[row - 3][column + 3] == enemy_token) {
 
-                printf(YELLOW "SABOTAGING ASC 2. HOLE DIAGN: column: %d\n" RESET, column + 2);
+                debug_printf(YELLOW "SABOTAGING ASC 2. HOLE DIAGN: column: %d\n" RESET, column + 2);
                 return column + 1;
             }
         }
@@ -159,7 +159,7 @@ int get_column_computer_sabotage_victory(struct Player computer) {
                     is_cell_empty(row - 2, column + 2) && !is_cell_empty(row - 1, column + 2) &&
                 board[row - 3][column + 3] == enemy_token) {
 
-                printf(YELLOW "SABOTAGING ASC 3. HOLE DIAGN: column: %d\n" RESET, column + 3);
+                debug_printf(YELLOW "SABOTAGING ASC 3. HOLE DIAGN: column: %d\n" RESET, column + 3);
                 return column + 2;
             }
         }
@@ -177,7 +177,7 @@ int get_column_computer_sabotage_victory(struct Player computer) {
                 board[row - 2][column + 2] == enemy_token &&
                 can_place_token_here(row - 3, column + 3)) {
 
-                printf(YELLOW "SABOTAGING ASC 4. HOLE DIAGN: column: %d\n" RESET, column + 4);
+                debug_printf(YELLOW "SABOTAGING ASC 4. HOLE DIAGN: column: %d\n" RESET, column + 4);
                 return column + 3;
             }
         }
@@ -197,7 +197,7 @@ int get_column_computer_sabotage_victory(struct Player computer) {
                 board[row - 2][column - 2] == enemy_token &&
                 can_place_token_here(row - 3, column - 3)) {
 
-                printf(PURPLE "SABOTAGING DESC DIAGN HOLE 1: column: %d\n" RESET, column - 2);
+                debug_printf(PURPLE "SABOTAGING DESC DIAGN HOLE 1: column: %d\n" RESET, column - 2);
                 return column - 3;
             }
         }
@@ -215,7 +215,7 @@ int get_column_computer_sabotage_victory(struct Player computer) {
                 can_place_token_here(row - 2, column - 2) &&
                 board[row - 3][column - 3] == enemy_token) {
 
-                printf(PURPLE "SABOTAGING DESC DIAGN HOLE 2: column: %d\n" RESET, column - 1);
+                debug_printf(PURPLE "SABOTAGING DESC DIAGN HOLE 2: column: %d\n" RESET, column - 1);
                 return column - 2;
             }
         }
@@ -233,7 +233,7 @@ int get_column_computer_sabotage_victory(struct Player computer) {
                 board[row - 2][column - 2] == enemy_token &&
                 board[row - 3][column - 3] == enemy_token) {
 
-                printf(PURPLE "SABOTAGING DESC DIAGN HOLE 3: column: %d\n" RESET, column);
+                debug_printf(PURPLE "SABOTAGING DESC DIAGN HOLE 3: column: %d\n" RESET, column);
                 return column - 1;
             }
         }
@@ -251,7 +251,7 @@ int get_column_computer_sabotage_victory(struct Player computer) {
                 board[row - 2][column - 2] == enemy_token &&
                 board[row - 3][column - 3] == enemy_token) {
 
-                printf(PURPLE "SABOTAGING DESC DIAGN HOLE 4: column: %d\n" RESET, column + 1);
+                debug_printf(PURPLE "SABOTAGING DESC DIAGN HOLE 4: column: %d\n" RESET, column + 1);
                 return column;
             }
         }
@@ -271,7 +271,7 @@ int get_column_computer_sabotage_victory(struct Player computer) {
                     board[row][column + 1] == enemy_token &&
                 is_cell_empty(row, column + 2) && !is_cell_empty(row + 1, column + 2)) {
 
-                printf(GREEN "SABOTAGING SURROUNDINGS: column: %d\n" RESET, column + 3);
+                debug_printf(GREEN "SABOTAGING SURROUNDINGS: column: %d\n" RESET, column + 3);
                 return column + 2;
             }
         }
@@ -296,7 +296,7 @@ int get_computer_winner_column(struct Player computer) {
                 can_place_token_here(row - 3, column)) {
 
 //                TODO add to -DEBUG
-                printf(GREEN "WINNING VERTICAL: COLUMN %d\n" RESET, column + 1);
+                debug_printf(GREEN "WINNING VERTICAL: COLUMN %d\n" RESET, column + 1);
                 return column;
             }
         }
@@ -315,7 +315,7 @@ int get_computer_winner_column(struct Player computer) {
                 board[row][column + 2] == computer.token &&
                 can_place_token_here(row, column + 3)) {
 
-                printf(GREEN "WINNING HORIZONTAL 4. HOLE: column: %d\n" RESET, column + 4);
+                debug_printf(GREEN "WINNING HORIZONTAL 4. HOLE: column: %d\n" RESET, column + 4);
                 return column + 3;
             }
         }
@@ -330,7 +330,7 @@ int get_computer_winner_column(struct Player computer) {
                 can_place_token_here(row, column + 2)&&
                 board[row][column + 3] == computer.token) {
 
-                printf(GREEN "WINNING HORIZONTAL 3. HOLE: column: %d\n" RESET, column + 3);
+                debug_printf(GREEN "WINNING HORIZONTAL 3. HOLE: column: %d\n" RESET, column + 3);
                 return column + 2;
             }
         }
@@ -345,7 +345,7 @@ int get_computer_winner_column(struct Player computer) {
                 board[row][column - 2] == computer.token &&
                 can_place_token_here(row, column - 3)) {
 
-                printf(GREEN "WINNING HORIZONTAL 1. HOLE: column: %d\n" RESET, column - 2);
+                debug_printf(GREEN "WINNING HORIZONTAL 1. HOLE: column: %d\n" RESET, column - 2);
                 return column - 3;
             }
         }
@@ -360,7 +360,7 @@ int get_computer_winner_column(struct Player computer) {
                 can_place_token_here(row, column - 2) &&
                 board[row][column - 3] == computer.token) {
 
-                printf(GREEN "WINNING HORIZONTAL 2. HOLE: column: %d\n" RESET, column - 1);
+                debug_printf(GREEN "WINNING HORIZONTAL 2. HOLE: column: %d\n" RESET, column - 1);
                 return column - 2;
             }
         }
@@ -382,7 +382,7 @@ int get_computer_winner_column(struct Player computer) {
                 board[row - 2][column + 2] == computer.token &&
                 board[row - 3][column + 3] == computer.token) {
 
-                printf(GREEN "WINNING ASC 2. HOLE DIAGN: column: %d\n" RESET, column + 1);
+                debug_printf(GREEN "WINNING ASC 2. HOLE DIAGN: column: %d\n" RESET, column + 1);
                 return column;
             }
         }
@@ -400,7 +400,7 @@ int get_computer_winner_column(struct Player computer) {
                 board[row - 2][column + 2] == computer.token &&
                 board[row - 3][column + 3] == computer.token) {
 
-                printf(GREEN "WINNING ASC 2. HOLE DIAGN: column: %d\n" RESET, column + 2);
+                debug_printf(GREEN "WINNING ASC 2. HOLE DIAGN: column: %d\n" RESET, column + 2);
                 return column + 1;
             }
         }
@@ -418,7 +418,7 @@ int get_computer_winner_column(struct Player computer) {
                 is_cell_empty(row - 2, column + 2) && !is_cell_empty(row - 1, column + 2) &&
                 board[row - 3][column + 3] == computer.token) {
 
-                printf(GREEN "WINNING ASC 3. HOLE DIAGN: column: %d\n" RESET, column + 3);
+                debug_printf(GREEN "WINNING ASC 3. HOLE DIAGN: column: %d\n" RESET, column + 3);
                 return column + 2;
             }
         }
@@ -436,7 +436,7 @@ int get_computer_winner_column(struct Player computer) {
                 board[row - 2][column + 2] == computer.token &&
                 can_place_token_here(row - 3, column + 3)) {
 
-                printf(GREEN "WINNING ASC 4. HOLE DIAGN: column: %d\n" RESET, column + 4);
+                debug_printf(GREEN "WINNING ASC 4. HOLE DIAGN: column: %d\n" RESET, column + 4);
                 return column + 3;
             }
         }
@@ -456,7 +456,7 @@ int get_computer_winner_column(struct Player computer) {
                 board[row - 2][column - 2] == computer.token &&
                 can_place_token_here(row - 3, column - 3)) {
 
-                printf(GREEN "WINNING DESC DIAGN HOLE 1: column: %d\n" RESET, column - 2);
+                debug_printf(GREEN "WINNING DESC DIAGN HOLE 1: column: %d\n" RESET, column - 2);
                 return column - 3;
             }
         }
@@ -474,7 +474,7 @@ int get_computer_winner_column(struct Player computer) {
                 can_place_token_here(row - 2, column - 2) &&
                 board[row - 3][column - 3] == computer.token) {
 
-                printf(GREEN "WINNING DESC DIAGN HOLE 2: column: %d\n" RESET, column - 1);
+                debug_printf(GREEN "WINNING DESC DIAGN HOLE 2: column: %d\n" RESET, column - 1);
                 return column - 2;
             }
         }
@@ -492,7 +492,7 @@ int get_computer_winner_column(struct Player computer) {
                 board[row - 2][column - 2] == computer.token &&
                 board[row - 3][column - 3] == computer.token) {
 
-                printf(GREEN "WINNING DESC DIAGN HOLE 3: column: %d\n" RESET, column);
+                debug_printf(GREEN "WINNING DESC DIAGN HOLE 3: column: %d\n" RESET, column);
                 return column - 1;
             }
         }
@@ -510,7 +510,7 @@ int get_computer_winner_column(struct Player computer) {
                 board[row - 2][column - 2] == computer.token &&
                 board[row - 3][column - 3] == computer.token) {
 
-                printf(GREEN "WINNING DESC DIAGN HOLE 4: column: %d\n" RESET, column + 1);
+                debug_printf(GREEN "WINNING DESC DIAGN HOLE 4: column: %d\n" RESET, column + 1);
                 return column;
             }
         }
@@ -530,7 +530,7 @@ int get_computer_winner_column(struct Player computer) {
                 board[row][column + 1] == computer.token &&
                 is_cell_empty(row, column + 2) && !is_cell_empty(row + 1, column + 2)) {
 
-                printf(GREEN "WINNING SURROUNDINGS: column: %d\n" RESET, column + 3);
+                debug_printf(GREEN "WINNING SURROUNDINGS: column: %d\n" RESET, column + 3);
                 return column + 2;
             }
         }
@@ -562,7 +562,7 @@ int *get_computer_columns_to_avoid(struct Player computer) {
                 board[row][column + 2] == enemy_token &&
                 can_place_token_here(row + 1, column + 3)) {
 
-                printf(BLACK "STORING HORIZONTAL 4. HOLE: column: %d\n" RESET, column + 4);
+                debug_printf(BLACK "STORING HORIZONTAL 4. HOLE: column: %d\n" RESET, column + 4);
 
                 if (!contains(columns_to_avoid, column + 3)) {
                     columns_to_avoid[size++] = column + 3;
@@ -573,7 +573,7 @@ int *get_computer_columns_to_avoid(struct Player computer) {
 
     //   |⬤|⬤| |⬤|
     //   | | |X| |
-    // horizontal_right_hole_check: If enemy could have 4 in a row and fourth is empty
+    // horizontal_right_hole_3_check: If enemy could have 4 in a row and fourth is empty
     for (int row = BOARD_SIZE - 1; row >= 0; row--) {
         for (int column = 0; column < BOARD_SIZE - 3; column++) { //0-4  5 6 7
             if (board[row][column] == enemy_token &&
@@ -581,7 +581,7 @@ int *get_computer_columns_to_avoid(struct Player computer) {
                 can_place_token_here(row + 1, column + 2) &&
                 board[row][column + 3] == enemy_token) {
 
-                printf(BLACK "STORING HORIZONTAL 3. HOLE: column: %d\n" RESET, column + 3);
+                debug_printf(BLACK "STORING HORIZONTAL 3. HOLE: column: %d\n" RESET, column + 3);
 
                 if (!contains(columns_to_avoid, column + 2)) {
                     columns_to_avoid[size++] = column + 2;
@@ -592,7 +592,7 @@ int *get_computer_columns_to_avoid(struct Player computer) {
 
     //   | |⬤|⬤|⬤|
     //   |X| | | |
-    // horizontal_left_check: If enemy could have 4 in a row and can  and first is empty
+    // horizontal_left_hole_1_check: If enemy could have 4 in a row and can  and first is empty
     for (int row = BOARD_SIZE - 1; row >= 0; row--) {
         for (int column = BOARD_SIZE - 1; column >= 3; column--) { // 0 1 2| 3-7
             if (board[row][column] == enemy_token &&
@@ -600,7 +600,7 @@ int *get_computer_columns_to_avoid(struct Player computer) {
                 board[row][column - 2] == enemy_token &&
                 can_place_token_here(row + 1, column - 3)) {
 
-                printf(BLACK "STORING HORIZONTAL 1. HOLE: column: %d\n" RESET, column - 2);
+                debug_printf(BLACK "STORING HORIZONTAL 1. HOLE: column: %d\n" RESET, column - 2);
 
                 if (!contains(columns_to_avoid, column - 3)) {
                     columns_to_avoid[size++] = column - 3;
@@ -611,7 +611,7 @@ int *get_computer_columns_to_avoid(struct Player computer) {
 
     //   |⬤|_|⬤|⬤|
     //   | |X| | |
-    // horizontal_left_hole_check: If enemy could have 4 in a row and second is empty
+    // horizontal_left_hole_2_check: If enemy could have 4 in a row and second is empty
     for (int row = BOARD_SIZE - 1; row >= 0; row--) {
         for (int column = BOARD_SIZE - 1; column >= 3; column--) { //  0 1 2|3-7
             if (board[row][column] == enemy_token &&
@@ -619,7 +619,7 @@ int *get_computer_columns_to_avoid(struct Player computer) {
                 can_place_token_here(row + 1, column - 2) &&
                 board[row][column - 3] == enemy_token) {
 
-                printf(BLACK "STORING HORIZONTAL 2. HOLE: column: %d\n" RESET, column - 1);
+                debug_printf(BLACK "STORING HORIZONTAL 2. HOLE: column: %d\n" RESET, column - 1);
 
 
                 if (!contains(columns_to_avoid, column - 2)) {
@@ -645,7 +645,7 @@ int *get_computer_columns_to_avoid(struct Player computer) {
                 board[row - 2][column + 2] == enemy_token &&
                 board[row - 3][column + 3] == enemy_token) {
 
-                printf(BLACK "STORING ASC 2. HOLE DIAGN: column: %d\n" RESET, column + 1);
+                debug_printf(BLACK "STORING ASC 2. HOLE DIAGN: column: %d\n" RESET, column + 1);
 
                 if (!contains(columns_to_avoid, column)) {
                     columns_to_avoid[size++] = column;
@@ -666,7 +666,7 @@ int *get_computer_columns_to_avoid(struct Player computer) {
                 board[row - 2][column + 2] == enemy_token &&
                 board[row - 3][column + 3] == enemy_token) {
 
-                printf(BLACK "STORING ASC 2. HOLE DIAGN: column: %d\n" RESET, column + 2);
+                debug_printf(BLACK "STORING ASC 2. HOLE DIAGN: column: %d\n" RESET, column + 2);
 
                 if (!contains(columns_to_avoid, column + 1)) {
                     columns_to_avoid[size++] = column + 1;
@@ -687,7 +687,7 @@ int *get_computer_columns_to_avoid(struct Player computer) {
                 can_place_token_here(row - 1, column + 2) &&
                 board[row - 3][column + 3] == enemy_token) {
 
-                printf(BLACK "STORING ASC 3. HOLE DIAGN: column: %d\n" RESET, column + 3);
+                debug_printf(BLACK "STORING ASC 3. HOLE DIAGN: column: %d\n" RESET, column + 3);
 
                 if (!contains(columns_to_avoid, column + 2)) {
                     columns_to_avoid[size++] = column + 2;
@@ -708,7 +708,7 @@ int *get_computer_columns_to_avoid(struct Player computer) {
                 board[row - 2][column + 2] == enemy_token &&
                 can_place_token_here(row - 2, column + 3)) {
 
-                printf(BLACK "STORING ASC 4. HOLE DIAGN: column: %d\n" RESET, column + 4);
+                debug_printf(BLACK "STORING ASC 4. HOLE DIAGN: column: %d\n" RESET, column + 4);
 
                 if (!contains(columns_to_avoid, column + 3)) {
                     columns_to_avoid[size++] = column + 3;
@@ -731,7 +731,7 @@ int *get_computer_columns_to_avoid(struct Player computer) {
                 board[row - 2][column - 2] == enemy_token &&
                 can_place_token_here(row - 2, column - 3)) {
 
-                printf(BLACK "STORING DESC DIAGN HOLE 1: column: %d\n" RESET, column - 2);
+                debug_printf(BLACK "STORING DESC DIAGN HOLE 1: column: %d\n" RESET, column - 2);
 
                 if (!contains(columns_to_avoid, column - 3)) {
                     columns_to_avoid[size++] = column - 3;
@@ -752,7 +752,7 @@ int *get_computer_columns_to_avoid(struct Player computer) {
                 can_place_token_here(row - 1, column - 2) &&
                 board[row - 3][column - 3] == enemy_token) {
 
-                printf(BLACK "STORING DESC DIAGN HOLE 2: column: %d\n" RESET, column - 1);
+                debug_printf(BLACK "STORING DESC DIAGN HOLE 2: column: %d\n" RESET, column - 1);
 
                 if (!contains(columns_to_avoid, column - 2)) {
                     columns_to_avoid[size++] = column - 2;
@@ -773,7 +773,7 @@ int *get_computer_columns_to_avoid(struct Player computer) {
                 board[row - 2][column - 2] == enemy_token &&
                 board[row - 3][column - 3] == enemy_token) {
 
-                printf(BLACK "STORING DESC DIAGN HOLE 3: column: %d\n" RESET, column);
+                debug_printf(BLACK "STORING DESC DIAGN HOLE 3: column: %d\n" RESET, column);
 
                 if (!contains(columns_to_avoid, column - 1)) {
                     columns_to_avoid[size++] = column - 1;
@@ -794,7 +794,7 @@ int *get_computer_columns_to_avoid(struct Player computer) {
                 board[row - 2][column - 2] == enemy_token &&
                 board[row - 3][column - 3] == enemy_token) {
 
-                printf(BLACK "STORING DESC DIAGN HOLE 4: column: %d\n" RESET, column + 1);
+                debug_printf(BLACK "STORING DESC DIAGN HOLE 4: column: %d\n" RESET, column + 1);
 
                 if (!contains(columns_to_avoid, column)) {
                     columns_to_avoid[size++] = column;
@@ -817,7 +817,7 @@ int *get_computer_columns_to_avoid(struct Player computer) {
 //                board[row][column + 1] == enemy_token &&
 //                is_cell_empty(row, column + 2) && !is_cell_empty(row + 1, column + 2)) {
 //
-//                printf(BLACK "STORING SURROUNDINGS: column: %d\n" RESET, column + 3);
+//                debug_printf(BLACK "STORING SURROUNDINGS: column: %d\n" RESET, column + 3);
 //
 //                if (!contains(columns_to_avoid, column + 2)){
 //                    columns_to_avoid[size++] = column + 2;
