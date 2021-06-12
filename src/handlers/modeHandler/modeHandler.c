@@ -2,14 +2,7 @@
 #include "../inputHandler/inputHandler.h"
 #include "../outputHandler/outputHandler.h"
 #include "../../board/board.h"
-#include "../otherHeaders/colors.h"
 #include "../gameLogicHandler/gameLogicHandler.h"
-
-
-#ifndef DEBUGG
-#define DEBUG 1
-#define debug_print(args ...) if (DEBUG){ printf(RED); printf(args); printf(RESET); }
-#endif
 
 
 void init_modes() {
