@@ -8,13 +8,6 @@
 #include "../handlers/outputHandler/outputHandler.h"
 #include "../board/board.h"
 
-#ifdef DEBUG
-#define debug_print(format, ...) printf(format, __VA_ARGS__)
-#else
-#define debug_print(...)
-#endif
-
-
 void start() {
     srand ( time(NULL) );
     init();
