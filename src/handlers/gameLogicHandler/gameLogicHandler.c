@@ -1,6 +1,6 @@
 #include <unistd.h>
 #include <stdio.h>
-#include <colors.h>
+#include "../otherHeaders/colors.h"
 #include <malloc.h>
 #include "../../board/board.h"
 #include "../outputHandler/outputHandler.h"

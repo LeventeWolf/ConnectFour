@@ -3,7 +3,7 @@
 #include "inputHandler.h"
 #include "../../board/board.h"
 #include "../outputHandler/outputHandler.h"
-#include "../modeHandler/colors.h"
+#include "../otherHeaders/colors.h"
 #include "../gameLogicHandler/gameLogicHandler.h"
 
 int get_main_menu_choice(){

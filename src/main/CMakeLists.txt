@@ -1,4 +1,4 @@
-add_executable(main main.c)
+add_executable(main main.c ../handlers/otherHeaders/debug.h)
 
 target_link_libraries(main gameMaster)
 target_link_libraries(gameMaster board)

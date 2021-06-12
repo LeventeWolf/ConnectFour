@@ -4,12 +4,11 @@
 #include "../modeHandler/modeHandler.h"
 #include "../../board/board.h"
 #include "../gameLogicHandler/gameLogicHandler.h"
-#include "../modeHandler/colors.h"
+#include "../otherHeaders/colors.h"
 
 int get_random_column(int *columns_to_avoid) {
-    if (get_array_size(columns_to_avoid) == sizeof(columns_to_avoid))
+    if (get_array_size(columns_to_avoid) == BOARD_SIZE)
         return rand() % BOARD_SIZE;
-
 
     int random_column;
 

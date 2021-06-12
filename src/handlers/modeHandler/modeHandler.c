@@ -2,7 +2,7 @@
 #include "../inputHandler/inputHandler.h"
 #include "../outputHandler/outputHandler.h"
 #include "../../board/board.h"
-#include "colors.h"
+#include "../otherHeaders/colors.h"
 #include "../gameLogicHandler/gameLogicHandler.h"
 
 

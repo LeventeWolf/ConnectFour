@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "../../gameMaster/gameMaster.h"
 #include "../modeHandler/modeHandler.h"
-#include "../modeHandler/colors.h"
+#include "../otherHeaders/colors.h"
 
 void show_mode_title(char *mode) {
     printf( PADDING "--%s--" PADDING "\n\n", mode);

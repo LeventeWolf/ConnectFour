@@ -4,19 +4,21 @@ Console implementation of the game Connect Four in C
 ## Setup & Run
 
 ```sh
-cmake -H. -Bbuild
+cmake -H. -Bbuild [-DCMAKE_BUILD_TYPE=Debug]
 make -C build -j
 ./build/main/main
 rm -rf build
 ```
 
-Or run the bash scripts
-```sh
-./cmake.sh
+Or with bash scripts:
+```shell
+./cmake.sh [Debug]
 ./main.sh
 ./clean.sh
 ```
-Give permissions to the script files (with chmod)
+
+(Give permissions to the script files) <br>
+(Commands in "[ ]" are optional)
 
 If you want to run the scripts without "./" you can even add current directory to the PATH:
 ```shell
