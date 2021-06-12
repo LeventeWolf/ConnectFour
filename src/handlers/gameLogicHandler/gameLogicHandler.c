@@ -1,12 +1,12 @@
 #include <unistd.h>
 #include <stdio.h>
-#include "../otherHeaders/colors.h"
 #include <malloc.h>
 #include "../../board/board.h"
 #include "../outputHandler/outputHandler.h"
 #include "../gameLogicHandler/gameLogicHandler.h"
 #include "../inputHandler/inputHandler.h"
 #include "../computerHandler/computerHandler.h"
+#include "../otherHeaders/debug.h"
 
 void print_array(int* array);
 
@@ -36,7 +36,7 @@ void play_computer_turn(struct Player computer) {
     // TODO don't prepare enemy win
     // dont prepare enemy win (avoid putting under enemy win condition)
     int *columns_to_avoid = get_computer_columns_to_avoid(computer);
-    print_array(columns_to_avoid);
+    if (DEBUG) print_array(columns_to_avoid);
 
     // sabotage enemy victory
     int try_sabotage_victory = get_column_computer_sabotage_victory(computer);
