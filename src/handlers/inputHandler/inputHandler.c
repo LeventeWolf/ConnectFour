@@ -36,8 +36,6 @@ int get_index_where_to_put(){
 }
 
 
-
-
 char** get_two_player_name(){
     char **player_names = malloc(2 * sizeof(char *));
     player_names[0] = malloc(100 * sizeof(char));
@@ -74,6 +72,18 @@ char* get_player_name(){
     return player_name;
 }
 
+int get_number_of_victories(){
+    int choice;
+
+    printf("Number of victories to end the game (max 100)\n");
+    printf("> ");
+    while(scanf("%d" ,&choice) != 1 || !(1 <= choice && choice <= 100)){
+        printf("Invalid choice!\n");
+        printf("> ");
+        while(getchar() != '\n');
+    }
+    return choice;
+}
 
 struct Player *get_two_players() {
     char **player_names = get_two_player_name();

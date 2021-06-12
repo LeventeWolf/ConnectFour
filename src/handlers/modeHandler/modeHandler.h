@@ -17,6 +17,8 @@ struct Player {
     char* color;
     char token;
     bool is_human;
+
+    int victories;
 };
 
 int play_mode(int mode);
