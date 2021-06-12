@@ -42,6 +42,7 @@ void play_computer_turn(struct Player computer) {
     int try_sabotage_victory = get_column_computer_sabotage_victory(computer);
     if (try_sabotage_victory != -1){
         put_color_to_board(try_sabotage_victory, computer.token);
+        free(columns_to_avoid);
         return;
     }
 
