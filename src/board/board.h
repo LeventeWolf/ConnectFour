@@ -3,6 +3,7 @@
 #ifndef CONNECTFOUR_BOARD_H
 #define CONNECTFOUR_BOARD_H
 
+#define TOKEN "⬤"
 #define BOARD_SIZE 8
 
 extern char** board;
