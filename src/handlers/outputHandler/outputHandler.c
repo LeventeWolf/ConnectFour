@@ -3,6 +3,7 @@
 #include "../../gameMaster/gameMaster.h"
 #include "../modeHandler/modeHandler.h"
 #include "../otherHeaders/colors.h"
+#include "../otherHeaders/debug.h"
 
 void show_mode_title(char *mode) {
     printf( PADDING "--%s--" PADDING "\n\n", mode);
@@ -40,5 +41,7 @@ void show_enter_your_choice(){
 }
 
 void clear_console(){
+    if (DEBUG) return;
+
     system("clear");
 }

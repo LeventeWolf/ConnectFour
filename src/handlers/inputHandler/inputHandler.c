@@ -4,6 +4,7 @@
 #include "../../board/board.h"
 #include "../outputHandler/outputHandler.h"
 #include "../otherHeaders/colors.h"
+#include "../otherHeaders/debug.h"
 #include "../gameLogicHandler/gameLogicHandler.h"
 
 int get_main_menu_choice(){
@@ -42,6 +43,10 @@ char** get_two_player_name(){
     player_names[0] = malloc(100 * sizeof(char));
     player_names[1] = malloc(100 * sizeof(char));
 
+    debug_printf("player_names address: %p\n", player_names);
+    debug_printf("player_names[0] address: %p\n", player_names[0]);
+    debug_printf("player_names[1] address: %p\n", player_names[1]);
+
 
     show_enter_player_name(1);
     scanf("%99s", player_names[0]);
@@ -58,6 +63,9 @@ char** get_two_player_name(){
 
 char* get_player_name(){
     char *player_name = malloc(100 * sizeof(char));
+
+    debug_printf("player_name address: %p\n", player_name);
+
     show_enter_player_name(1);
     scanf("%99s", player_name);
 
@@ -88,6 +96,8 @@ struct Player *get_two_players() {
 
     struct Player *players = malloc(2 * sizeof(struct Player));
 
+    debug_printf("players address: %p\n", players);
+
     players[0] = player1;
     players[1] = player2;
 
@@ -106,8 +116,6 @@ struct Player *get_one_player_and_computer(){
 
     player1.is_human = true;
     player2.is_human = false;
-
-    player2.columns_to_avoid = create_my_array(BOARD_SIZE, -1);
 
     player1.color = BLUE;
     player2.color = RED;
@@ -133,9 +141,6 @@ struct Player *get_two_computers() {
     player1.is_human = false;
     player2.is_human = false;
 
-    player1.columns_to_avoid = create_my_array(BOARD_SIZE, -1);
-    player2.columns_to_avoid = create_my_array(BOARD_SIZE, -1);
-
     player1.color = BLUE;
     player2.color = RED;
 
@@ -144,7 +149,8 @@ struct Player *get_two_computers() {
     players[0] = player1;
     players[1] = player2;
 
-    return players;}
+    return players;
+}
 
 
 void free_players(struct Player *players){
@@ -156,14 +162,11 @@ void free_players(struct Player *players){
 
 void free_human_and_computer(struct Player *players){
     free(players[0].name);
-    free(players[1].columns_to_avoid);
 
     free(players);
 }
 
 void free_computers(struct Player *players) {
-    free(players[0].columns_to_avoid);
-    free(players[1].columns_to_avoid);
 
     free(players);
 }
