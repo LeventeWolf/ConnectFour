@@ -132,6 +132,7 @@ void practice_mode() {
                 show_victory(player);
                 players[i % 2].victories += 1;
                 hasWon = true;
+                free_board();
                 init_board();
                 break;
             }
@@ -140,6 +141,7 @@ void practice_mode() {
         if (!hasWon) {
             show_board(players);
             show_draw();
+            free_board();
             init_board();
         }
 
@@ -147,6 +149,8 @@ void practice_mode() {
             printf(PADDING"--Next Round--\n");
     }
 
+
+    //todo extract printf to function
 
     if (players[0].victories == number_of_victories) {
         printf("    Playing untill %d victories\n\n", number_of_victories);
