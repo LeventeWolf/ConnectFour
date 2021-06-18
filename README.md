@@ -6,7 +6,8 @@ Console implementation of the game Connect Four in C
 ```sh
 cmake -H. -Bbuild [-DCMAKE_BUILD_TYPE=Debug]
 make -C build -j
-./build/main/main
+./build/src/main/main
+[./build/src/main/utest]
 rm -rf build
 ```
 
@@ -14,6 +15,7 @@ Or with bash scripts:
 ```shell
 ./cmake.sh [Debug]
 ./main.sh
+[./test.sh]
 ./clean.sh
 ```
 
