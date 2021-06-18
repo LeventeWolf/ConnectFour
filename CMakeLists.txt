@@ -24,3 +24,4 @@ add_subdirectory(src/main)
 
 target_link_libraries(utest board)
 target_link_libraries(utest gameMaster)
+target_link_libraries(utest computerHandler)

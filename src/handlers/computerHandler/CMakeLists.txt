@@ -1,2 +1,2 @@
-add_library(computerHandler computerHandler.c ../otherHeaders/debug.h)
+add_library(computerHandler computerHandler.c utest-computerHandler.c utest-computerHandler.h ../otherHeaders/debug.h)
 target_include_directories(computerHandler PUBLIC .)
