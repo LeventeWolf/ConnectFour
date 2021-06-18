@@ -1,6 +1,8 @@
+#include <CUnit/CUnit.h>
+
 #ifndef UTESTTEST_LIB_H
 #define UTESTTEST_LIB_H
 
-int add(int a, int b);
+extern CU_SuiteInfo board_test_suites[];
 
 #endif //UTESTTEST_LIB_H

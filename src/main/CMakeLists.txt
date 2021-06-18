@@ -1,5 +1,5 @@
 add_executable(main main.c ../handlers/otherHeaders/debug.h)
-add_executable (utest utest.c utest-board.c utest-board.h)
+add_executable (utest utest.c ../board/utest-board.h)
 
 target_link_libraries(utest cunit)
 

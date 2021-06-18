@@ -14,3 +14,5 @@ add_subdirectory(src/handlers/outputHandler)
 add_subdirectory(src/handlers/modeHandler)
 add_subdirectory(src/handlers/computerHandler)
 add_subdirectory(src/main)
+
+target_link_libraries(utest board)
