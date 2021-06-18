@@ -1,2 +1,2 @@
 #!/bin/bash
-./build/src/main/test_lib
+./build/src/main/utest
