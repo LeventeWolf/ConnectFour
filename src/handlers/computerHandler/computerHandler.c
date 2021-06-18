@@ -19,8 +19,8 @@ int get_random_column(int *columns_to_avoid) {
     return random_column;
 }
 
-int get_column_computer_sabotage_victory(struct Player computer) {
-    char enemy_token = computer.token == 'X' ? 'O' : 'X';
+int get_column_computer_sabotage_victory(char token) {
+    char enemy_token = token == 'X' ? 'O' : 'X';
 
     //TODO extract !is_cell_empty(row + 1, column) to has_cell_under();
 

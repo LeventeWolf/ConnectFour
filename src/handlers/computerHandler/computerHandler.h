@@ -8,7 +8,7 @@
  */
 int get_random_column(int *columns_to_avoid);
 
-int get_column_computer_sabotage_victory(struct Player computer);
+int get_column_computer_sabotage_victory(char token);
 
 int get_computer_winner_column(struct Player player);
 
