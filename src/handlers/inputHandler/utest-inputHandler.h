@@ -1,0 +1,6 @@
+#ifndef CONNECTFOUR_UTEST_INPUTHANDLER_H
+#define CONNECTFOUR_UTEST_INPUTHANDLER_H
+
+extern CU_SuiteInfo inputHandler_test_suites[];
+
+#endif //CONNECTFOUR_UTEST_INPUTHANDLER_H

@@ -3,6 +3,7 @@
 #include "../gameMaster/utest-gameMaster.h"
 #include "../handlers/computerHandler/utest-computerHandler.h"
 #include <CUnit/CUnit.h>
+#include <utest-inputHandler.h>
 
 int main() {
     if (CU_initialize_registry() != CUE_SUCCESS) { return -1; }
@@ -10,6 +11,7 @@ int main() {
     if (CU_register_suites(board_test_suites) != CUE_SUCCESS) {return -1;}
     if (CU_register_suites(gameMaster_test_suites) != CUE_SUCCESS) {return -1;}
     if (CU_register_suites(computerHandler_test_suites) != CUE_SUCCESS) {return -1;}
+    if (CU_register_suites(inputHandler_test_suites) != CUE_SUCCESS) {return -1;}
 
 
     CU_basic_set_mode(CU_BRM_NORMAL);
