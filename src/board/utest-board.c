@@ -21,9 +21,3 @@ CU_TestInfo board_tests[] = {
         {"Testing board initialization", test_init_board},
         CU_TEST_INFO_NULL
 };
-
-CU_SuiteInfo board_test_suites[] = {
-        {"Board tests", NULL, NULL, NULL, NULL,
-         board_tests },
-        CU_SUITE_INFO_NULL
-};

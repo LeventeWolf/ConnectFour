@@ -1,6 +1,6 @@
 #ifndef CONNECTFOUR_UTEST_COMPUTERHANDLER_H
 #define CONNECTFOUR_UTEST_COMPUTERHANDLER_H
 
-extern CU_SuiteInfo computerHandler_test_suites[];
+extern CU_TestInfo computerHandler_tests[];
 
 #endif //CONNECTFOUR_UTEST_COMPUTERHANDLER_H

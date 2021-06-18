@@ -6,12 +6,6 @@ static void test_gameMaster() {
 }
 
 CU_TestInfo gameMaster_tests[] = {
-        {"Testing GameMaster", test_gameMaster},
+        {"Testing board initialization", test_gameMaster},
         CU_TEST_INFO_NULL
-};
-
-CU_SuiteInfo gameMaster_test_suites[] = {
-        {"GameMaster tests", NULL, NULL, NULL, NULL,
-         gameMaster_tests },
-        CU_SUITE_INFO_NULL
 };

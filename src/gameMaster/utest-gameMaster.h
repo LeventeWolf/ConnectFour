@@ -1,6 +1,6 @@
-#ifndef CONNECTFOUR_UTEST_COMPUTERHANDLER_H
+#ifndef CONNECTFOUR_UTEST_GAMEMASTER_H
 #define CONNECTFOUR_UTEST_GAMEMASTER_H
 
-extern CU_SuiteInfo gameMaster_test_suites[];
+extern CU_TestInfo gameMaster_tests[];
 
 #endif //CONNECTFOUR_UTEST_COMPUTERHANDLER_H

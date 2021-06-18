@@ -71,9 +71,3 @@ CU_TestInfo computerHandler_tests[] = {
         {"Testing horizontal sabotage victory",     test_horizontal_sabotage_victory},
         CU_TEST_INFO_NULL
 };
-
-CU_SuiteInfo computerHandler_test_suites[] = {
-        {"ComputerHandler tests", NULL, NULL, NULL, NULL,
-         computerHandler_tests },
-        CU_SUITE_INFO_NULL
-};
