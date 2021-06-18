@@ -1,7 +1,10 @@
 #include <CUnit/CUnit.h>
+#include <malloc.h>
 #include "utest-computerHandler.h"
 #include "computerHandler.h"
 #include "../../board/board.h"
+#include "../otherHeaders/colors.h"
+#include "../inputHandler/inputHandler.h"
 
 static void test_get_random_column_bounds() {
     int columns_to_avoid[] = {-1};
@@ -28,12 +31,44 @@ static void test_get_random_column_and_avoid_one(){
             return;
         }
     }
-
 }
 
+static void test_vertical_sabotage_victory() {
+    init_board();
+
+    board[BOARD_SIZE - 3][0] = 'O';
+    board[BOARD_SIZE - 2][0] = 'O';
+    board[BOARD_SIZE - 1][0] = 'O';
+
+    int expected = 0;
+    int result = get_column_computer_sabotage_victory('X');
+
+    free_board();
+
+    CU_ASSERT_EQUAL(expected, result);
+}
+
+static void test_horizontal_sabotage_victory() {
+    init_board();
+
+    board[BOARD_SIZE - 1][2] = 'O';
+    board[BOARD_SIZE - 1][1] = 'O';
+    board[BOARD_SIZE - 1][0] = 'O';
+
+    int expected = 3;
+    int result = get_column_computer_sabotage_victory('X');
+
+    free_board();
+
+    CU_ASSERT_EQUAL(expected, result);
+}
+
+
 CU_TestInfo computerHandler_tests[] = {
-        {"Testing get_random_column Bounds", test_get_random_column_bounds},
+        {"Testing get_random_column Bounds",        test_get_random_column_bounds},
         {"Testing get_random_column Avoid Columns", test_get_random_column_and_avoid_one},
+        {"Testing vertical sabotage victory",       test_vertical_sabotage_victory},
+        {"Testing horizontal sabotage victory",     test_horizontal_sabotage_victory},
         CU_TEST_INFO_NULL
 };
 
