@@ -8,7 +8,7 @@ void init();
 
 void start();
 
-void show_title();
+void show_game_title();
 
 void main_menu();
 

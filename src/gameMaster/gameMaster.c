@@ -9,21 +9,18 @@
 #include "../board/board.h"
 
 void start() {
-    srand ( time(NULL) );
     init();
 
-    clear_console();
-
-    show_title();
+    show_game_title();
     main_menu();
 }
 
 void init() {
-    init_modes();
-}
+    srand ( time(NULL) );
 
-void show_title() {
-    printf(TITLE_PADDING "Connect Four" TITLE_PADDING "\n\n");
+    clear_console();
+
+    init_modes();
 }
 
 void main_menu() {

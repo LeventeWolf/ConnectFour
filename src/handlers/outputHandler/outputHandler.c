@@ -5,6 +5,10 @@
 #include "../otherHeaders/colors.h"
 #include "../otherHeaders/debug.h"
 
+void show_game_title() {
+    printf(TITLE_PADDING "Connect Four" TITLE_PADDING "\n\n");
+}
+
 void show_mode_title(char *mode) {
     printf( PADDING "--%s--" PADDING "\n\n", mode);
 }
