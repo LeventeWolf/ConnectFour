@@ -65,5 +65,5 @@ void show_board(struct Player *players){
     printf("\\");
     printf("\n\n");
 
-    debug_printf("%s\n", "DEBUG: Board printed successfully!");
+//    debug_printf("%s\n", "DEBUG: Board printed successfully!"); todo add debug levels
 }
