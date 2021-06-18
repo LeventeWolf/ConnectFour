@@ -28,6 +28,10 @@ int get_column_computer_sabotage_victory(struct Player computer) {
 
     // VERTICAL CHECKS
 
+    // |_|
+    // |⬤|
+    // |⬤|
+    // |⬤|
     // vertical_check : if enemy has 3 in a vertical column
     for (int column = 0; column < BOARD_SIZE; column++) {
         for (int row = BOARD_SIZE - 1; row >= 3; row--) {
