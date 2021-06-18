@@ -1,7 +1,7 @@
 #include <CUnit/CUnit.h>
 #include "board.h"
 
-void test_init_board() {
+static void test_init_board() {
     init_board();
 
     for (int i = 0; i < BOARD_SIZE; ++i) {
