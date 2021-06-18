@@ -7,6 +7,7 @@ void test_init_board() {
     for (int i = 0; i < BOARD_SIZE; ++i) {
         for (int j = 0; j < BOARD_SIZE; ++j) {
             if (board[i][j] != ' ') {
+                free_board();
                 CU_FAIL("Board initialize failed!")
             }
         }
