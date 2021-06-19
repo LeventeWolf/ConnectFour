@@ -10,7 +10,7 @@
 CU_SuiteInfo connect_four_suites[] = {
         {"board", NULL, NULL, NULL, NULL,board_tests},
         {"gameMaster", NULL, NULL, NULL, NULL, gameMaster_tests},
-        {"computerHandler", NULL, NULL, NULL, NULL, computerHandler_tests},
+        {"computerHandler", NULL, NULL, computerHandler_setup, computerHandler_teardown, computerHandler_tests},
         {"gameLogicHandlerTests", NULL, NULL, gameLogicHandler_setup, gameLogicHandler_teardown, gameLogicHandler_tests},
         {"inputHandlerTests", NULL, NULL, inputHandler_setup, inputHandler_teardown, inputHandler_tests},
         {"modeHandlerTest", NULL, NULL, NULL, NULL, modeHandler_tests},

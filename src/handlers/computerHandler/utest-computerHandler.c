@@ -6,6 +6,16 @@
 #include "../otherHeaders/colors.h"
 #include "../inputHandler/inputHandler.h"
 
+void computerHandler_setup(){
+    init_board();
+
+}
+
+void computerHandler_teardown(){
+    free_board();
+
+}
+
 static void test_get_random_column_bounds() {
     int columns_to_avoid[] = {-1};
 
@@ -17,7 +27,6 @@ static void test_get_random_column_bounds() {
             return;
         }
     }
-
 }
 
 static void test_get_random_column_and_avoid_one(){
@@ -27,6 +36,7 @@ static void test_get_random_column_and_avoid_one(){
         int result = get_random_column(columns_to_avoid);
 
         if (result == 1) {
+            free_board();
             CU_FAIL("Should have avoided column!")
             return;
         }
@@ -34,8 +44,6 @@ static void test_get_random_column_and_avoid_one(){
 }
 
 static void test_vertical_sabotage_victory() {
-    init_board();
-
     board[BOARD_SIZE - 3][0] = 'O';
     board[BOARD_SIZE - 2][0] = 'O';
     board[BOARD_SIZE - 1][0] = 'O';
@@ -43,22 +51,16 @@ static void test_vertical_sabotage_victory() {
     int expected = 0;
     int result = get_column_computer_sabotage_victory('X');
 
-    free_board();
-
     CU_ASSERT_EQUAL(expected, result);
 }
 
 static void test_horizontal_sabotage_victory() {
-    init_board();
-
     board[BOARD_SIZE - 1][2] = 'O';
     board[BOARD_SIZE - 1][1] = 'O';
     board[BOARD_SIZE - 1][0] = 'O';
 
     int expected = 3;
     int result = get_column_computer_sabotage_victory('X');
-
-    free_board();
 
     CU_ASSERT_EQUAL(expected, result);
 }
