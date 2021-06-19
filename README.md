@@ -30,3 +30,6 @@ export PATH="$PATH:."
 ## Configurations
 
 If the TOKEN "⬤" is wider than your ascii characters, you can replace it with "O" in the board.h header.
+
+### Github link
+https://github.com/LeventeWolf/ConnectFour
