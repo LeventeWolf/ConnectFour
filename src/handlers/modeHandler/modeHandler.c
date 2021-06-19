@@ -165,6 +165,5 @@ void practice_mode() {
     }
     printf("      --Congratulations!--\n\n");
 
-    free_board();
     free_players(players);
 }
