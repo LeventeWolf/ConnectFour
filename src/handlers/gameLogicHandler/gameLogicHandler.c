@@ -17,7 +17,7 @@ void play_turn(struct Player player) {
         play_human_turn(player);
     } else {
         play_computer_turn(player);
-//        sleep(1);
+        sleep(1);
     }
 
     //TODO add -CLEAR flag
