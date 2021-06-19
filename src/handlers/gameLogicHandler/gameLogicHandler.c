@@ -134,8 +134,10 @@ bool has_won(char token) {
     // horizontal_check
     for (int i = 0; i < BOARD_SIZE; i++) {
         for (int j = 0; j < BOARD_SIZE  - 3; j++) {
-            if (board[i][j] == token && board[i][j + 1] == token &&
-                board[i][j + 2] == token && board[i][j + 3] == token) {
+            if (board[i][j] == token &&
+                board[i][j + 1] == token &&
+                board[i][j + 2] == token &&
+                board[i][j + 3] == token) {
                 return true;
             }
         }
@@ -144,8 +146,10 @@ bool has_won(char token) {
     // vertical_check
     for (int i = 0; i < BOARD_SIZE - 3; i++) {
         for (int j = 0; j < BOARD_SIZE; j++) {
-            if (board[i][j] == token && board[i + 1][j] == token &&
-                board[i + 2][j] == token && board[i + 3][j] == token) {
+            if (board[i][j] == token &&
+                board[i + 1][j] == token &&
+                board[i + 2][j] == token &&
+                board[i + 3][j] == token) {
                 return true;
             }
         }
@@ -154,8 +158,10 @@ bool has_won(char token) {
     // ascending_diagonal_check
     for (int i = 3; i < BOARD_SIZE; i++) {
         for (int j = 0; j < BOARD_SIZE - 3; j++) {
-            if (board[i][j] == token && board[i - 1][j + 1] == token &&
-                board[i - 2][j + 2] == token && board[i - 3][j + 3] == token)
+            if (board[i][j] == token &&
+                board[i - 1][j + 1] == token &&
+                board[i - 2][j + 2] == token &&
+                board[i - 3][j + 3] == token)
                 return true;
         }
     }
@@ -163,8 +169,10 @@ bool has_won(char token) {
     // descending_diagonal_check
     for (int i = 3; i < BOARD_SIZE; i++) {
         for (int j = 3; j < BOARD_SIZE; j++) {
-            if (board[i][j] == token && board[i - 1][j - 1] == token &&
-                board[i - 2][j - 2] == token && board[i - 3][j - 3] == token)
+            if (board[i][j] == token &&
+                board[i - 1][j - 1] == token &&
+                board[i - 2][j - 2] == token &&
+                board[i - 3][j - 3] == token)
                 return true;
         }
     }
