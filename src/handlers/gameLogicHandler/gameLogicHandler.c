@@ -33,7 +33,6 @@ void play_computer_turn(struct Player computer) {
     }
 
 
-    // TODO don't prepare enemy win
     // dont prepare enemy win (avoid putting under enemy win condition)
     int *columns_to_avoid = get_computer_columns_to_avoid(computer);
     if (DEBUG) print_array(columns_to_avoid);
