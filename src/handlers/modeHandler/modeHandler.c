@@ -105,7 +105,7 @@ void practice_mode() {
     show_mode_title("Practice Mode");
 
     int number_of_victories = get_number_of_victories();
-    printf("\n");
+    show_new_line();
     struct Player *players = get_two_players();
 
     players[0].victories = 0;
@@ -113,12 +113,10 @@ void practice_mode() {
 
 
     while (players[0].victories != number_of_victories && players[1].victories != number_of_victories) {
-        printf("    Playing untill %d victories\n", number_of_victories);
-        printf("%-5s : %d\n", players[0].name, players[0].victories);
-        printf("%-5s : %d\n", players[1].name, players[1].victories);
+        show_playing_until_n_victories(number_of_victories);
+        show_players_names_and_victories(players);
 
         bool hasWon = false;
-
 
         for (int i = 0; i < BOARD_SIZE * BOARD_SIZE; ++i) {
             struct Player player = players[i % 2];
@@ -146,24 +144,16 @@ void practice_mode() {
         }
 
         if (players[0].victories != number_of_victories && players[1].victories != number_of_victories)
-            printf(PADDING"--Next Round--\n");
+            show_next_round();
     }
 
+    show_playing_until_n_victories(number_of_victories);
+    show_new_line();
+    show_players_names_and_victories(players);
+    show_new_line();
+    show_practice_winner_player(players[0].victories == number_of_victories ? players[0] : players[1]);
+    show_congratulations();
 
-    //todo extract printf to function
-
-    if (players[0].victories == number_of_victories) {
-        printf("    Playing untill %d victories\n\n", number_of_victories);
-        printf("%-5s : %d\n", players[0].name, players[0].victories);
-        printf("%-5s : %d\n\n", players[1].name, players[1].victories);
-        printf("-- %s's %s%s%s has just won the practice! --\n", players[0].name, players[0].color, TOKEN, RESET);
-    } else {
-        printf( "   Playing untill %d victories\n\n", number_of_victories);
-        printf("%-5s : %d\n", players[0].name, players[0].victories);
-        printf("%-5s : %d\n\n", players[1].name, players[1].victories);
-        printf("-- %s's %s%s%s has just won the practice! --\n", players[1].name, players[1].color, TOKEN, RESET);
-    }
-    printf("      --Congratulations!--\n\n");
 
     free_players(players);
 }
