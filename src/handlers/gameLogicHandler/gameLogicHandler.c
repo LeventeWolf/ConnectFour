@@ -17,7 +17,7 @@ void play_turn(struct Player player) {
         play_human_turn(player);
     } else {
         play_computer_turn(player);
-        sleep(1);
+//        sleep(1);
     }
 
     //TODO add -CLEAR flag
@@ -112,6 +112,9 @@ bool can_place_token_here(int i, int j){
     //if not first row and has token under
     if (i != 0 && is_cell_empty(i+1, j)) return false;
 
+    //if cell under is empty
+    if (is_cell_empty(i + 1, j)) return false;
+
     return true;
 }
 
@@ -188,6 +191,16 @@ bool contains(const int *array, const int column){
     }
 
     return false;
+}
+
+int number_of_not_full_columns(){
+    int columns = 0;
+
+    for (int j = 0; j < BOARD_SIZE; ++j) {
+        if (!is_column_full(j)) columns++;
+    }
+
+    return columns;
 }
 
 /*

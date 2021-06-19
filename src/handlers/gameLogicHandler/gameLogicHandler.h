@@ -23,6 +23,7 @@ bool contains(const int *array, int column);
 
 int *create_my_array(int size, int default_value);
 
+int number_of_not_full_columns();
 
 /*
  * return codes:

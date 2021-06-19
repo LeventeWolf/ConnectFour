@@ -7,8 +7,8 @@
 #include "../otherHeaders/debug.h"
 
 int get_random_column(int *columns_to_avoid) {
-    if (get_array_size(columns_to_avoid) == BOARD_SIZE)
-        return rand() % BOARD_SIZE;
+    if (number_of_not_full_columns() == get_array_size(columns_to_avoid))
+        return columns_to_avoid[0];
 
     int random_column;
 
