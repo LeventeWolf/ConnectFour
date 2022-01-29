@@ -3,6 +3,16 @@ Console implementation of the game Connect Four in C
 
 ## Setup & Run
 
+### Prerequisite
+
+The project contains CUnit test cases. You must install it first. <br>
+
+```shell
+sudo apt-get install libcunit1 libcunit1-doc libcunit1-dev
+```
+
+### Build
+
 ```sh
 cmake -H. -Bbuild [-DCMAKE_BUILD_TYPE=Debug]
 make -C build -j
