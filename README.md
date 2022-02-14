@@ -27,7 +27,7 @@ Four different gamemodes:
 
 ### Prerequisite
 
-The project contains CUnit test cases. You must install it first. <br>
+The project contains CUnit Test cases. You must install it first. <br>
 
 ```shell
 sudo apt-get install libcunit1 libcunit1-doc libcunit1-dev
