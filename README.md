@@ -16,11 +16,13 @@ Computer movements are developed with Enhanced AI Technology.
 
 ### One player gameplay
 
+![One-player-mode](https://user-images.githubusercontent.com/38537285/153905818-e1f825de-03aa-4111-bc4a-4c04949a7a96.gif)
+
 ### AI vs AI
 
+![Computer-vs-Computer-mode](https://user-images.githubusercontent.com/38537285/153906127-fd3b0732-efd9-4f1c-8768-1f1933c69f33.gif)
 
-More: <a href='./documentation/screenshots'> /documentation/screenshots
-
+  
 ## Setup & Run
 
 ### Prerequisite
