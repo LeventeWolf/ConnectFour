@@ -3,14 +3,14 @@ Console implementation of the game Connect Four in C
 
 ## Featuring
 
-Four different gamemodes
+Four different gamemodes:
 
 1. Two player     (Player vs Player)
 2. One player     (Player vs Computer)
 3. Computer Fight (Computer vs Computer)
 4. Practice       (Player vs Player N games)
 
-Computer movements are developed with Enhanced AI Technology.
+*Computer movements are developed with Enhanced AI Technology*
 
 ## Insights
 
