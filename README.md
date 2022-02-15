@@ -10,7 +10,7 @@ Four different gamemodes:
 3. Computer Fight (Computer vs Computer)
 4. Practice       (Player vs Player N games)
 
-*Computer movements are developed with Enhanced AI Technology*
+*Computer movements were implemented with of Enhanced AI Technology*
 
 ## Insights
 
